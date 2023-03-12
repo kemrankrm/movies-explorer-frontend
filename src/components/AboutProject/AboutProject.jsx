@@ -4,7 +4,7 @@ import classNames from "classnames";
 const AboutProject = () => {
     return (
         <div className={'about'}>
-            <h2 className={'about__title'}>
+            <h2 className={'section__heading'}>
                 О проекте
             </h2>
             <div className={'about__content'}>

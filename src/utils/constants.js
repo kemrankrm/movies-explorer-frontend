@@ -21,3 +21,34 @@ export const aboutSectionTextContent = [
 
     }
 ]
+
+export const techList = [
+    {
+        title: 'HTML',
+        id:'html'
+    },
+    {
+        title: 'CSS',
+        id:'css'
+    },
+    {
+        title: 'JS',
+        id:'js'
+    },
+    {
+        title: 'React',
+        id:'react'
+    },
+    {
+        title: 'Git',
+        id:'git'
+    },
+    {
+        title: 'Express.js',
+        id:'express'
+    },
+    {
+        title: 'mongoDB',
+        id:'mongo'
+    }
+]

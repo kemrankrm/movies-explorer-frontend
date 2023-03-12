@@ -12,3 +12,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.section__heading {
+  font-family: Inter, sans-serif;
+  font-size: 22px;
+  line-height: 27px;
+  font-weight: 400;
+
+  margin: 0 0 70px;
+  padding-bottom: 23px;
+  color: #FFF;
+
+  border-bottom: 1px solid #FFF;
+}

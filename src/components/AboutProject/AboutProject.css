@@ -10,17 +10,6 @@
     color: #FFF;
 }
 
-.about__title {
-    font-size: 22px;
-    line-height: 27px;
-    font-weight: 400;
-
-    margin: 0 0 70px;
-    padding-bottom: 23px;
-
-    border-bottom: 1px solid #FFF;
-}
-
 .about__content {
     display: flex;
     justify-content: space-between;
