@@ -15,3 +15,9 @@ export const navTabLinks = [
         id: 'student'
     }
 ];
+
+export const aboutSectionTextContent = [
+    {
+
+    }
+]

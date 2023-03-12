@@ -1,0 +1,90 @@
+.about {
+    min-width: 100%;
+
+    padding: 110px 70px;
+    box-sizing: border-box;
+
+    font-family: Inter, sans-serif;
+    text-align: left;
+    letter-spacing: -0.04em;
+    color: #FFF;
+}
+
+.about__title {
+    font-size: 22px;
+    line-height: 27px;
+    font-weight: 400;
+
+    margin: 0 0 70px;
+    padding-bottom: 23px;
+
+    border-bottom: 1px solid #FFF;
+}
+
+.about__content {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 110px;
+}
+
+.about__text {
+    max-width: 550px;
+}
+
+.about__subtitle {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+
+    margin: 0 0 26px;
+}
+
+.about__description {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    margin: 0;
+    font-weight: 400;
+}
+
+.about__timeline {
+    display: flex;
+}
+
+.about__backend {
+    width: 20%;
+}
+
+.about__frontend {
+    width: 80%;
+}
+
+.about__period {
+    min-height: 36px;
+    margin: 0 0 14px;
+    font-weight: 400;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color:#303030;
+}
+
+.about__period_black {
+    color: #000;
+    background-color: #3DDC84;
+}
+
+.about__cite {
+    margin: 0;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0;
+    text-align: center;
+    color: #8B8B8B;
+}
+
+
