@@ -52,3 +52,21 @@ export const techList = [
         id:'mongo'
     }
 ]
+
+export const portfolioList = [
+    {
+        title: 'Статичный сайт',
+        url: '#',
+        id: 'static',
+    },
+    {
+        title: 'Адаптивный сайт',
+        url: '#',
+        id: 'adaptive',
+    },
+    {
+        title: 'Одностраничное приложение',
+        url: '#',
+        id: 'spa',
+    },
+]

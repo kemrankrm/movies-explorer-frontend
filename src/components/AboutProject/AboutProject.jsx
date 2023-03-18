@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 const AboutProject = () => {
     return (
-        <div className={'about'}>
+        <section className={'about'}>
             <h2 className={'section__heading'}>
                 О проекте
             </h2>
@@ -35,7 +35,7 @@ const AboutProject = () => {
                     <p className={'about__cite'}>Front-end</p>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 

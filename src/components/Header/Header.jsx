@@ -4,7 +4,7 @@ import logo from '../../images/logo.svg'
 const Header = () => {
     return (
         <>
-            <div className={'header'}>
+            <section className={'header'}>
                 <img className={'header__logo'} alt={'logo'} src={logo}/>
                 <div className={'header__button-container'}>
                     <button className={'header__signup'}>
@@ -14,7 +14,7 @@ const Header = () => {
                         Войти
                     </button>
                 </div>
-            </div>
+            </section>
         </>
     )
 }
