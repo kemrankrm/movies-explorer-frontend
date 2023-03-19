@@ -1,19 +1,19 @@
-.register {
+.login {
     max-width: 396px;
     margin: 0 auto;
     padding: 70px 0;
     box-sizing: border-box;
 }
 
-.register__heading {
+.login__heading {
     margin-bottom: 40px;
 }
 
-.register__icon {
+.login__icon {
     margin: 0 0 40px
 }
 
-.register__greating {
+.login__greating {
     margin: 0;
     font-family: Inter, sans-serif;
     font-size: 24px;
@@ -25,14 +25,14 @@
 
 }
 
-.register__form {
+.login__form {
     display: flex;
     flex-direction: column;
     padding: 0;
 
 }
 
-.register__fieldset {
+.login__fieldset {
     display: flex;
     flex-direction: column;
     padding: 0;
@@ -42,7 +42,7 @@
     border: none;
 }
 
-.register__label {
+.login__label {
     font-size: 10px;
     font-weight: 400;
     line-height: 12px;
@@ -53,7 +53,7 @@
     margin: 0 0 10px;
 }
 
-.register__input {
+.login__input {
     width: 100%;
     height: 46px;
 
@@ -73,15 +73,15 @@
     box-sizing: border-box;
 }
 
-.register__input:focus {
+.login__input:focus {
     outline: none;
 }
 
-.register__input:last-of-type {
-    margin-bottom: 22px;
+.login__input:last-of-type {
+    margin: 0;
 }
 
-.register__button {
+.login__button {
     height: 45px;
 
     border-radius: 3px;
@@ -97,12 +97,12 @@
     text-align: center;
     color: #FFFFFF;
 
-    margin: 69px 0 16px;
+    margin: 179px 0 16px;
 
     cursor: pointer;
 }
 
-.register__note {
+.login__note {
     font-family: Inter, sans-serif;
     font-size: 14px;
     font-weight: 400;
@@ -114,7 +114,7 @@
     margin: 0;
 }
 
-.register__link {
+.login__link {
     color: #4285F4;
     text-decoration: none;
 }

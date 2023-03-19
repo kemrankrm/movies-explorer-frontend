@@ -41,7 +41,7 @@ const Register = () => {
             </form>
             <p className={'register__note'}>
                 Уже заргеистрированы?
-                <Link to={'/login'} className={'register__link'}>
+                <Link to={'/signin'} className={'register__link'}>
                      Войти
                 </Link>
             </p>
