@@ -1,22 +1,20 @@
-import './Movies.css'
-import SearchForm from "../SearchForm/SearchForm";
+import './SavedMovies.css'
 import MovieCardList from "../MovieCardList/MovieCardList";
-import Preloader from "../Preloader/Preloader";
+import SearchForm from "../SearchForm/SearchForm";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 
-const Movies = () => {
+const SavedMovies = () => {
     return (
         <>
             <Header isLoggedIn={true}/>
-            <section className={'movies'}>
+            <section className={'saved'}>
                 <SearchForm/>
-                <MovieCardList type={'all'}/>
-                <Preloader/>
+                <MovieCardList type={'saved'}/>
             </section>
             <Footer/>
         </>
     )
 }
 
-export default Movies
+export default SavedMovies

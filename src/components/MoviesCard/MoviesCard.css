@@ -77,3 +77,9 @@
 .card__button_saved {
     background-image: url("../../images/save6d.svg");
 }
+
+.card__button_delete {
+    background-image: url("../../images/delete-movie-icon.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
