@@ -7,6 +7,7 @@ import {useState} from "react";
 import Profile from "../Profile/Profile";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
+import NotFound from "../404/404";
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(true)
@@ -20,6 +21,7 @@ function App() {
             <Route path={'/profile'} element={<Profile/>}/>
             <Route path={'/signin'} element={<Login/>}/>
             <Route path={'/signup'} element={<Register/>}/>
+            <Route path={'*'} element={<NotFound/>}/>
         </Routes>
     </div>
   );

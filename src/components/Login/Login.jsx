@@ -29,12 +29,12 @@ const Login = () => {
                         className={classNames('login__input', 'login__input_name')}
                     />
                 </fieldset>
-                <button className={'login__button'} type={'submit'}>Зарегистрироваться</button>
+                <button className={'login__button'} type={'submit'}>Войти</button>
             </form>
             <p className={'login__note'}>
-                Уже заргеистрированы?
+                Ещё не зарегистрированы?
                 <Link to={'/signup'} className={'login__link'}>
-                    Войти
+                    Регистрация
                 </Link>
             </p>
         </section>
