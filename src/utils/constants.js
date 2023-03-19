@@ -70,3 +70,78 @@ export const portfolioList = [
         id: 'spa',
     },
 ]
+
+export const moviesList = [
+    {
+        title: 'В погоне за Бенксли',
+        duration: 27,
+        image: '',
+        saved: false,
+    },
+    {
+        title: 'В погоне за Бенксли',
+        duration: 27,
+        image: '',
+        saved: false,
+    },
+    {
+        title: 'В погоне за Бенксли',
+        duration: 27,
+        image: '',
+        saved: true,
+    },
+    {
+        title: 'В погоне за Бенксли',
+        duration: 27,
+        image: '',
+        saved: false,
+    },
+    {
+        title: 'В погоне за Бенксли',
+        duration: 27,
+        image: '',
+        saved: false,
+    },
+    {
+        title: 'В погоне за Бенксли',
+        duration: 27,
+        image: '',
+        saved: true,
+    },
+    {
+        title: 'В погоне за Бенксли',
+        duration: 27,
+        image: '',
+        saved: false,
+    },
+    {
+        title: 'В погоне за Бенксли',
+        duration: 27,
+        image: '',
+        saved: true,
+    },
+    {
+        title: 'В погоне за Бенксли',
+        duration: 27,
+        image: '',
+        saved: false,
+    },
+    {
+        title: 'В погоне за Бенксли',
+        duration: 27,
+        image: '',
+        saved: false,
+    },
+    {
+        title: 'В погоне за Бенксли',
+        duration: 27,
+        image: '',
+        saved: false,
+    },
+    {
+        title: 'В погоне за Бенксли',
+        duration: 27,
+        image: '',
+        saved: false,
+    }
+]

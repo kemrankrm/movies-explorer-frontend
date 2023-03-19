@@ -8,11 +8,55 @@
     align-items: center;
     padding: 0 70px;
     margin: 0 auto;
+    position: relative;
 }
 
 .header__logo {
     width: 38px;
     height: 38px;
+}
+
+.header__navigation {
+    width: 212px;
+    position: absolute;
+    left: calc(50% - 106px)
+}
+
+.header__navigation-list {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    color: #FFFFFF;
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0;
+    text-align: right;
+}
+
+.header__navigation-item {
+    margin-right: 16px;
+}
+
+.header__navigation-item:last-of-type {
+    margin: 0;
+}
+
+.header__navigation-link {
+    color: #FFFFFF;
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0;
+    text-align: right;
+    text-decoration: none;
 }
 
 .header__button-container {

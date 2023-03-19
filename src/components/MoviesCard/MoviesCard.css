@@ -1,0 +1,79 @@
+.card {
+    box-sizing: border-box;
+    background-color: #222222;
+
+    font-family: Inter, sans-serif;
+}
+
+.card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    min-height: 54px;
+    padding: 0 18px;
+
+    box-sizing: border-box;
+}
+
+.card__title {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0;
+    text-align: left;
+    color: #FFFFFF;
+
+    margin: 0;
+}
+
+.card__duration {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0;
+    text-align: right;
+    color: #8B8B8B;
+
+    margin: 0;
+}
+
+.card__image-container {
+    width: 100%;
+    min-height: 200px;
+    background-color: #424242;
+}
+
+.card__button-container {
+    min-height: 54px;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card__button {
+    border: none;
+    border-radius: 30px;
+
+    width: 100px;
+    height: 29px;
+
+    background-color: #313131;
+
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 11px;
+    letter-spacing: 0;
+    text-align: center;
+    color: #FFFFFF;
+
+    cursor: pointer;
+}
+
+.card__button_saved {
+    background-image: url("../../images/save6d.svg");
+}
