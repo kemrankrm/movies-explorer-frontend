@@ -41,6 +41,8 @@
     margin: 0;
 
     border: none;
+
+    color: #FFFFFF;
 }
 
 .search-form__input::placeholder {
@@ -77,7 +79,7 @@
     vertical-align: middle;
     width: 36px;
     height: 20px;
-    border: 1px solid black;
+    box-sizing: border-box;
     overflow: visible;
     background-image: url("../../images/smalltumboff.svg");
     background-repeat: no-repeat;
@@ -107,5 +109,46 @@
 
     .search-form__input {
         width: 628px;
+    }
+}
+
+
+@media screen and (max-width: 320px) {
+    .search-form {
+        padding: 84px 14px 50px;
+    }
+
+    .search-form__search {
+        padding-bottom: 9px;
+        margin-bottom: 40px;
+        box-sizing: border-box;
+    }
+
+    .search-form__input {
+        width: 212px;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 22px;
+
+    }
+
+    .search-form__checkbox {
+        justify-content: center;
+
+        font-family: Inter, sans-serif;
+        font-size: 11px;
+        font-weight: 400;
+        line-height: 18px;
+        letter-spacing: 0;
+        text-align: left;
+        color: #FFFFFF;
+
+    }
+
+    .search-form__switch-label {
+        display: flex;
+        flex-direction: row-reverse;
+
+        justify-content: center;
     }
 }

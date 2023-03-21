@@ -26,3 +26,17 @@ code {
 
   border-bottom: 1px solid #FFF;
 }
+
+@media screen and (max-width: 320px) {
+  .section__heading {
+    padding-bottom: 28px;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: left;
+
+  }
+
+  .section__heading_tech {
+    border-bottom: 1px solid #000000;
+  }
+}

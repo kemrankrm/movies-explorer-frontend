@@ -1,7 +1,6 @@
 import './Header.css';
 import logo from '../../images/logo.svg'
 import {useNavigate} from "react-router-dom";
-import profileIcon from '../../images/profileIconSvg.svg'
 import {useEffect, useState} from "react";
 import Navigation from "../Navigation/Navigation";
 import ProfileButton from "../ProfileButton/ProfileButton";
@@ -45,7 +44,9 @@ const Header = ({ isLoggedIn }) => {
             <section className={'header'}>
                 <img className={'header__logo'} alt={'logo'} id={'main'} src={logo} onClick={handleRoute}/>
                 { isLoggedIn && isDesktop && <Navigation /> }
-                <button className={'header__nav-button'} onClick={handleNavigationOpen}></button>
+                { isLoggedIn &&
+                    <button className={'header__nav-button'} onClick={handleNavigationOpen}></button>
+                }
                 {isNavOpen && isLoggedIn && !isDesktop &&
                     <>
                         <div className={'header__overlay'} onClick={handleNavigationClose}></div>

@@ -60,6 +60,7 @@
         text-align: center;
 
         margin: 0 auto 28px
+
     }
 
     .navigation__item_active {
@@ -80,4 +81,17 @@
     .navigation__item_home {
         display: block;
     }
+}
+
+@media screen and (max-width: 320px) {
+    .navigation__item {
+        margin: 0 0 24px;
+    }
+
+    .navigation__item_active {
+        padding-bottom: 7px;
+        margin-bottom: 15px;
+    }
+
+
 }

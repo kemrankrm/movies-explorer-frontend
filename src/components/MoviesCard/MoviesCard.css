@@ -92,3 +92,25 @@
         height: 190px;
     }
 }
+
+@media screen and (max-width: 320px) {
+    .card__header {
+        min-height: 46px;
+    }
+
+    .card__title {
+        font-size: 12px;
+    }
+
+    .card__duration {
+        font-size: 10px;
+    }
+
+    .card__image-container {
+        height: 168px;
+    }
+
+    .card__button-container {
+        min-height: 57px;
+    }
+}

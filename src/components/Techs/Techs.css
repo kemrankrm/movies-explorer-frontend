@@ -89,3 +89,29 @@
         line-height: 14.52px;
     }
 }
+
+@media screen and (max-width: 320px) {
+    .techs__wrapper {
+        padding: 70px 18px;
+    }
+
+    .techs__title {
+        margin: 60px 0 24px;
+
+        font-size: 30px;
+        line-height: 36px;
+    }
+
+    .techs__subtitle {
+        margin-bottom: 50px;
+        font-size: 11px;
+        line-height: 16px;
+
+    }
+
+    .techs__list {
+        width: 178px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+}

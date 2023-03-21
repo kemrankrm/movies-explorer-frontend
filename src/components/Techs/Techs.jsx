@@ -1,11 +1,12 @@
 import './Techs.css'
 import {techList} from "../../utils/constants";
+import classNames from "classnames";
 
 const Techs = () => {
     return (
         <section className={'techs'}>
             <div className={'techs__wrapper'}>
-                <h2 className={'section__heading'}>
+                <h2 className={classNames('section__heading', 'section__heading_tech')}>
                     Технологии
                 </h2>
                 <h3 className={'techs__title'}>

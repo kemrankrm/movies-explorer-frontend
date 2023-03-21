@@ -24,7 +24,7 @@
 }
 
 .profile__info {
-    min-width: 410px;
+    width: 410px;
 
     font-size: 11px;
     line-height: 13px;
@@ -106,5 +106,31 @@
 
     .profile__button_edit {
         font-weight: 400;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .profile {
+        padding: 70px 30px 40px;
+    }
+
+    .profile__greating {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 29px;
+
+        margin-bottom: 80px;
+    }
+
+    .profile__info {
+        width: 260px;
+        margin-bottom: 379px;
+    }
+
+    .profile__button {
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 15px;
+
     }
 }

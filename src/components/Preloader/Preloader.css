@@ -33,3 +33,9 @@
         padding: 50px 30px 80px;
     }
 }
+
+@media screen and (max-width: 320px) {
+    .preloader {
+        padding: 50px 10px 80px;
+    }
+}
