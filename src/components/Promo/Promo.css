@@ -24,3 +24,22 @@
     text-align: center;
     color: #FFF;
 }
+
+@media screen and (max-width: 1280px) {
+    .promo {
+        min-height: 834px;
+        margin: 0 20px;
+        padding: 350px 0 30px;
+
+        justify-content: space-between;
+    }
+
+    .promo__title {
+        max-width: 608px;
+
+        font-size: 40px;
+        line-height: 52px;
+
+        margin: 0 auto;
+    }
+}

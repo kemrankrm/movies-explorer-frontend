@@ -36,3 +36,13 @@
 
     cursor: pointer;
 }
+
+@media screen and (max-width: 1279px){
+    .notfound {
+        padding: 408px 0 222px;
+    }
+
+    .notfound__title {
+        margin-top: 0;
+    }
+}

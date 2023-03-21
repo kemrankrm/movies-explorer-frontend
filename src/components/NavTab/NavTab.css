@@ -26,3 +26,9 @@
     letter-spacing: 0;
     text-align: center;
 }
+
+@media screen and (max-width: 1280px) {
+    .navtab {
+        /*margin-bottom: 30px;*/
+    }
+}

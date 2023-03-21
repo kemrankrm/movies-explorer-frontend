@@ -14,3 +14,14 @@
     max-width: 1280px;
     box-sizing: border-box;
 }
+
+@media screen and (max-width: 1279px) {
+    .movies-list {
+        padding: 70px 30px 30px;
+    }
+
+    .movies-list__container {
+        grid-template-columns: repeat(2, 342px);
+        gap: 35px 24px;
+    }
+}

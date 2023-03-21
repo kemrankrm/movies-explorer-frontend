@@ -3,6 +3,8 @@
     background-color: #222222;
 
     font-family: Inter, sans-serif;
+
+    border-radius: 6px;
 }
 
 .card__header {
@@ -41,12 +43,12 @@
 
 .card__image-container {
     width: 100%;
-    min-height: 200px;
+    height: 200px;
     background-color: #424242;
 }
 
 .card__button-container {
-    min-height: 54px;
+    min-height: 65px;
     width: 100%;
 
     display: flex;
@@ -82,4 +84,11 @@
     background-image: url("../../images/delete-movie-icon.svg");
     background-repeat: no-repeat;
     background-position: center;
+}
+
+
+@media screen and (max-width: 1279px){
+    .card__image-container {
+        height: 190px;
+    }
 }

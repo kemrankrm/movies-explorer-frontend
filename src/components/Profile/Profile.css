@@ -19,7 +19,7 @@
     letter-spacing: 0;
     text-align: center;
 
-    margin-bottom: 123px;
+    margin: 0 auto 123px;
     cursor: default;
 }
 
@@ -48,7 +48,8 @@
 
 .profile__title {
     font-weight: 500;
-    margin: 0
+    margin: 0;
+    min-height: 14px;
 }
 
 .profile__content {
@@ -73,6 +74,8 @@
     border: none;
 
     cursor: pointer;
+    margin: 0;
+    padding: 0;
 }
 
 .profile__button_edit {
@@ -82,4 +85,26 @@
 
 .profile__button_logout {
     color: #EE3465;
+}
+
+@media screen and (max-width: 1279px) {
+    .profile {
+        padding: 236px 0 269px;
+    }
+
+    .profile__greating {
+        margin-bottom: 96px;
+    }
+
+    .profile__info {
+        margin-bottom: 210px;
+    }
+
+    .profile__button {
+        font-weight: 500;
+    }
+
+    .profile__button_edit {
+        font-weight: 400;
+    }
 }

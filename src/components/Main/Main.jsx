@@ -9,7 +9,7 @@ import Header from "../Header/Header";
 const Main = () => {
     return (
         <>
-            <Header isLoggedIn={true}/>
+            <Header isLoggedIn={false}/>
             <section className={'main'}>
                 <Promo/>
                 <AboutProject/>

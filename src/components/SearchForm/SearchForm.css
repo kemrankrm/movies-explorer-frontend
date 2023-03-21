@@ -17,11 +17,14 @@
     border: none;
     border-bottom: 1px solid #424242;
 
-    margin-bottom: 32px;
+    margin: 0 0 32px;
 }
 
 .search-form__checkbox {
+    display: flex;
     border: none;
+    margin: 0;
+    padding: 0;
 }
 
 .search-form__input {
@@ -33,6 +36,9 @@
     line-height: 34px;
     letter-spacing: 0;
     text-align: left;
+
+    box-sizing: border-box;
+    margin: 0;
 
     border: none;
 }
@@ -53,6 +59,8 @@
     border: none;
     border-radius: 48px;
     background-color: transparent;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .search-form__switch {
@@ -81,4 +89,23 @@
     background-image: url("../../images/smalltumbon.svg");
     background-repeat: no-repeat;
     background-size: contain;
+}
+
+
+@media screen and (max-width: 1279px) {
+    .search-form {
+        padding: 80px 30px 60px;
+    }
+
+    .search-form__search {
+        margin-bottom: 29px;
+    }
+
+    .search-form__checkbox {
+        justify-content: flex-end;
+    }
+
+    .search-form__input {
+        width: 628px;
+    }
 }

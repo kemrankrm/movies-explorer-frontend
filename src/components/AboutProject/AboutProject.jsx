@@ -9,7 +9,7 @@ const AboutProject = () => {
             </h2>
             <div className={'about__content'}>
                 <div className={'about__text'}>
-                    <h3 className={'about__subtitle'}>
+                    <h3 className={'about__title'}>
                         Дипломный проект включал 5 этапов
                     </h3>
                     <p className={'about__description'}>
@@ -17,7 +17,7 @@ const AboutProject = () => {
                     </p>
                 </div>
                 <div className={'about__text'}>
-                    <h3 className={'about__subtitle'}>
+                    <h3 className={'about__title'}>
                         На выполнение диплома ушло 5 недель
                     </h3>
                     <p className={'about__description'}>

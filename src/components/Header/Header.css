@@ -16,77 +16,26 @@
     height: 38px;
 }
 
-.header__navigation {
-    width: 212px;
-    position: absolute;
-    left: calc(50% - 106px)
+.header__nav-button {
+    visibility: hidden;
 }
 
-.header__navigation-list {
-    display: flex;
-    justify-content: space-between;
+.header__close-button {
+    position: absolute;
+    top: 22.5px;
+    right: 22.5px;
 
-    margin: 0;
+    /*rotate: 45deg;*/
+    width: 22px;
+    height: 22px;
+
+    border: none;
     padding: 0;
 
-    list-style: none;
-
-    color: #FFFFFF;
-    font-family: Inter, sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 18px;
-    letter-spacing: 0;
-    text-align: right;
-}
-
-.header__navigation-item {
-    margin-right: 16px;
-}
-
-.header__navigation-item:last-of-type {
-    margin: 0;
-}
-
-.header__navigation-link {
-    color: #FFFFFF;
-    font-family: Inter, sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 18px;
-    letter-spacing: 0;
-    text-align: right;
-    text-decoration: none;
-}
-
-.header__profile-button {
-    width: 100px;
-    height: 32px;
-
-    border: 1px solid #AAAAAA;
-    border-radius: 50px;
-
-    padding: 9px 12px;
-    box-sizing: border-box;
-
     background-color: transparent;
-
-    color: #FFFFFF;
-    font-family: Inter, sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 0;
-    letter-spacing: 0;
-    text-align: right;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.header__profile-icon {
-    width: 12px;
-    height: 14px;
+    background-image: url("../../images/closeButtonSideMenu.svg");
+    background-size: 25px;
+    background-position: center;
 }
 
 .header__button-container {
@@ -128,4 +77,51 @@
     color: #000;
 
     background-color: #3DDC84;
+}
+
+
+@media screen and (max-width: 1279px) {
+    .header {
+        padding: 0 30px
+    }
+
+    .header__nav-button {
+        visibility: visible;
+        border: none;
+        background-color: transparent;
+        background-image: url("../../images/navMenuButton.svg");
+        width: 44px;
+        height: 44px;
+    }
+
+    .header__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100vh;
+
+        background-color: #000000;
+        opacity: .5;
+    }
+
+    .header__side-menu {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 520px;
+        height: 1024px;
+
+        padding: 159px 0 90px;
+        box-sizing: border-box;
+
+        background-color: #202020;
+    }
 }

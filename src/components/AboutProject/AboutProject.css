@@ -13,14 +13,14 @@
 .about__content {
     display: flex;
     justify-content: space-between;
-    margin: 0 0 110px;
+    margin: 70px 0 110px;
 }
 
 .about__text {
     max-width: 550px;
 }
 
-.about__subtitle {
+.about__title {
     font-size: 20px;
     line-height: 24px;
     font-weight: 400;
@@ -74,6 +74,39 @@
     letter-spacing: 0;
     text-align: center;
     color: #8B8B8B;
+
 }
 
+@media screen and (max-width: 1279px) {
+    .about {
+        padding: 90px 50px;
+    }
 
+    .about__content {
+        margin-bottom: 93px;
+    }
+
+    .about__text {
+        max-width: 319px;
+    }
+
+    .about__description {
+        font-size: 12px;
+        line-height: 18px;
+        letter-spacing: 0;
+        margin: 0;
+    }
+
+    .about__backend {
+        width: 140px;
+    }
+
+    .about__frontend {
+        width: 528px;
+    }
+
+    .about__cite {
+        font-family: Suisse Intl, Inter, sans-serif;
+        font-weight: 400;
+    }
+}
