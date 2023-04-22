@@ -26,6 +26,18 @@
     color: #FFFFFF;
 
     cursor: pointer;
+
+    transition: all .2s ease-in-out;
+}
+
+.preloader__button:hover {
+    transform: scaleY(1.1);
+    opacity: .7;
+}
+
+.preloader__button:active {
+    transform: scaleY(1);
+    filter: brightness(1.3);
 }
 
 @media screen and (max-width: 1279px) {
