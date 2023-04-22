@@ -1,8 +1,5 @@
 import './SearchForm.css'
 import {useState} from "react";
-// import switchOn from '../../images/smalltumbon.svg';
-// import switchOff from '../../images/smalltumboff.svg';
-// import searchIcon from '../../images/find-button.svg'
 
 const SearchForm = () => {
     const [switchOn, setSwitchOn] = useState(true)

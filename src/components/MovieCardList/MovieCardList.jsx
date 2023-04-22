@@ -15,6 +15,7 @@ const MoviesCardList = ({ type }) => {
                                 title={item.title}
                                 duration={item.duration}
                                 saved={item.saved}
+                                image={item.image}
                                 key={index}
                             />
                         )
@@ -25,6 +26,7 @@ const MoviesCardList = ({ type }) => {
                                 title={item.title}
                                 duration={item.duration}
                                 saved={item.saved}
+                                image={item.image}
                                 key={index}
                             />
                         )

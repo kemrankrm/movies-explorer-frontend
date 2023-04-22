@@ -57,6 +57,7 @@
     width: 80px;
     height: 34px;
     background-image: url("../../images/find-button.svg");
+    background-position: center;
 
     border: none;
     border-radius: 48px;
@@ -72,6 +73,10 @@
     overflow: hidden;
     clip-path: inset(0 0 0 0);
     visibility: hidden;
+}
+
+.search-form__label-text {
+    color: #FFFFFF;
 }
 
 .search-form__pseudo {
@@ -150,5 +155,9 @@
         flex-direction: row-reverse;
 
         justify-content: center;
+    }
+
+    .search-form__label-text {
+        margin-right: 13px;
     }
 }

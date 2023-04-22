@@ -1,3 +1,8 @@
+import movie_pic from '../images/movie_pic.png';
+import movie_pic2 from '../images/movie_pic2.png';
+import movie_pic3 from '../images/movie_pic3.png';
+import movie_pic4 from '../images/movie_pic4.png';
+
 export const navTabLinks = [
     {
         title: 'О проекте',
@@ -71,77 +76,78 @@ export const portfolioList = [
     },
 ]
 
+
 export const moviesList = [
     {
         title: 'В погоне за Бенксли',
         duration: 27,
-        image: '',
+        image: movie_pic,
         saved: false,
     },
     {
         title: 'В погоне за Бенксли',
         duration: 27,
-        image: '',
+        image: movie_pic2,
         saved: false,
     },
     {
         title: 'В погоне за Бенксли',
         duration: 27,
-        image: '',
+        image: movie_pic3,
         saved: true,
     },
     {
         title: 'В погоне за Бенксли',
         duration: 27,
-        image: '',
+        image: movie_pic4,
         saved: false,
     },
     {
         title: 'В погоне за Бенксли',
         duration: 27,
-        image: '',
+        image: movie_pic,
         saved: false,
     },
     {
         title: 'В погоне за Бенксли',
         duration: 27,
-        image: '',
+        image: movie_pic2,
         saved: true,
     },
     {
         title: 'В погоне за Бенксли',
         duration: 27,
-        image: '',
+        image: movie_pic3,
         saved: false,
     },
     {
         title: 'В погоне за Бенксли',
         duration: 27,
-        image: '',
+        image: movie_pic4,
         saved: true,
     },
     {
         title: 'В погоне за Бенксли',
         duration: 27,
-        image: '',
+        image: movie_pic,
         saved: false,
     },
     {
         title: 'В погоне за Бенксли',
         duration: 27,
-        image: '',
+        image: movie_pic2,
         saved: false,
     },
     {
         title: 'В погоне за Бенксли',
         duration: 27,
-        image: '',
+        image: movie_pic3,
         saved: false,
     },
     {
         title: 'В погоне за Бенксли',
         duration: 27,
-        image: '',
+        image: movie_pic4,
         saved: false,
     }
 ]

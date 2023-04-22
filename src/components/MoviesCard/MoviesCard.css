@@ -45,6 +45,14 @@
     width: 100%;
     height: 200px;
     background-color: #424242;
+    overflow: hidden;
+
+    display: flex;
+}
+
+.card__image {
+    object-position: center;
+    object-fit: contain;
 }
 
 .card__button-container {

@@ -3,7 +3,7 @@ import classNames from "classnames";
 import {useState} from "react";
 import {useLocation} from "react-router-dom";
 
-const MoviesCard = ({ title, duration, saved }) => {
+const MoviesCard = ({ title, duration, saved, image }) => {
 
     const location = useLocation();
     const [isSaved, setIsSaved] = useState(false);
@@ -25,7 +25,7 @@ const MoviesCard = ({ title, duration, saved }) => {
                 <p className={'card__duration'}>{duration} минут</p>
             </div>
             <div className={'card__image-container'}>
-
+                <img className={'card__image'} alt={'movie cover'} src={image}/>
             </div>
             <div className={'card__button-container'}>
                 { isSaved

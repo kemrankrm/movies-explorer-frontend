@@ -8,7 +8,7 @@ import ProfileButton from "../ProfileButton/ProfileButton";
 const Header = ({ isLoggedIn }) => {
 
     const navigate = useNavigate();
-    const [isNavOpen, setIsNavOpen] = useState(true)
+    const [isNavOpen, setIsNavOpen] = useState(false)
     const [isDesktop, setIsDesktop] = useState(true)
 
     const handleScreenResize = () => {
