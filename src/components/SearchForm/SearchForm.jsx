@@ -8,7 +8,7 @@ const SearchForm = () => {
         <section className={'search-form'}>
             <form className={'search-form__form'}>
                 <fieldset className={'search-form__search'}>
-                    <input type={'text'} placeholder={'Фильм'} className={'search-form__input'}/>
+                    <input type={'text'} placeholder={'Фильм'} className={'search-form__input'} required={true}/>
                     <button type={"submit"} className={'search-form__button'}></button>
                 </fieldset>
                 <fieldset className={'search-form__checkbox'}>

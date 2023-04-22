@@ -27,8 +27,25 @@ const Header = ({ isLoggedIn }) => {
         window.addEventListener('resize', handleScreenResize)
     })
 
-    const handleRoute = () => {
-        navigate('/');
+    const handleRoute = (e) => {
+        const id = e.target.id;
+
+        switch (id) {
+            case 'main':
+                navigate('/');
+                break;
+
+            case 'signup':
+                navigate('/signup');
+                break
+
+            case 'signin':
+                navigate('/signin')
+                break
+
+            default:
+                return;
+        }
     }
 
     const handleNavigationOpen = () => {
@@ -63,10 +80,18 @@ const Header = ({ isLoggedIn }) => {
                         (isDesktop && <ProfileButton />)
                         :
                         <div className={'header__button-container'}>
-                            <button className={'header__signup'}>
+                            <button
+                                className={'header__signup'}
+                                onClick={handleRoute}
+                                id={'signup'}
+                            >
                                 Регистрация
                             </button>
-                            <button className={'header__signin'}>
+                            <button
+                                className={'header__signin'}
+                                onClick={handleRoute}
+                                id={'signin'}
+                            >
                                 Войти
                             </button>
                         </div>

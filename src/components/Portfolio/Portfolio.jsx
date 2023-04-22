@@ -1,6 +1,7 @@
 import './Portfolio.css'
 import {portfolioList} from "../../utils/constants";
 import arrow from '../../images/arrow-left-up-portfolio.svg';
+import {Link} from "react-router-dom";
 
 const Portfolio = () => {
     return (
@@ -10,8 +11,10 @@ const Portfolio = () => {
                 { portfolioList.map(item => {
                     return (
                         <li className={'portfolio__item'} key={item.id}>
-                            {item.title}
-                            <img className={'portfolio__arrow'} src={arrow} alt={'arrow'}/>
+                            <Link to={item.url} className={'portfolio__link'}>
+                                {item.title}
+                                <img className={'portfolio__arrow'} src={arrow} alt={'arrow'}/>
+                            </Link>
                         </li>
                     )
                 })}
