@@ -61,17 +61,17 @@ export const techList = [
 export const portfolioList = [
     {
         title: 'Статичный сайт',
-        url: '#',
+        url: 'https://github.com/kemrankrm/how-to-learn',
         id: 'static',
     },
     {
         title: 'Адаптивный сайт',
-        url: '#',
+        url: 'https://github.com/kemrankrm/russian-travel',
         id: 'adaptive',
     },
     {
         title: 'Одностраничное приложение',
-        url: '#',
+        url: 'https://github.com/kemrankrm/react-mesto-api-full',
         id: 'spa',
     },
 ]

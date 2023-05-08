@@ -94,15 +94,6 @@
         padding: 0 30px;
     }
 
-    .header__nav-button {
-        visibility: visible;
-        border: none;
-        background-color: transparent;
-        background-image: url("../../images/navMenuButton.svg");
-        width: 44px;
-        height: 44px;
-    }
-
     .header__overlay {
         position: absolute;
         top: 0;
@@ -132,6 +123,17 @@
         box-sizing: border-box;
 
         background-color: #202020;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header__nav-button {
+        visibility: visible;
+        border: none;
+        background-color: transparent;
+        background-image: url("../../images/navMenuButton.svg");
+        width: 44px;
+        height: 44px;
     }
 }
 

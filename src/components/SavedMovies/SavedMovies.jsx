@@ -7,7 +7,7 @@ import Header from "../Header/Header";
 const SavedMovies = () => {
     return (
         <>
-            <Header isLoggedIn={true}/>
+            {/*<Header isLoggedIn={true}/>*/}
             <section className={'saved'}>
                 <SearchForm/>
                 <MovieCardList type={'saved'}/>

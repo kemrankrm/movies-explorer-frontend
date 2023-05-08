@@ -35,10 +35,6 @@
     transition: all .2s ease-in-out;
 }
 
-/*.navigation__item:last-of-type {*/
-/*    margin: 0;*/
-/*}*/
-
 .navigation__item:hover {
     opacity: .7;
     cursor: pointer;
@@ -61,7 +57,7 @@
     display: none;
 }
 
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 768px) {
     .navigation {
         position: static;
         width: 100%;

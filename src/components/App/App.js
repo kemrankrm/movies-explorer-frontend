@@ -8,21 +8,17 @@ import Profile from "../Profile/Profile";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
 import NotFound from "../404/404";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(true)
     const location = useLocation();
   return (
     <div className="App">
-        <Routes>
-            <Route exact path={'/'} element={<Main/>}/>
-            <Route path={'/movies'} element={<Movies/>}/>
-            <Route path={'/saved-movies'} element={<SavedMovies/>}/>
-            <Route path={'/profile'} element={<Profile/>}/>
-            <Route path={'/signin'} element={<Login/>}/>
-            <Route path={'/signup'} element={<Register/>}/>
-            <Route path={'*'} element={<NotFound/>}/>
-        </Routes>
+        <Header isLoggedIn={false}/>
+        <Main/>
+        <Footer/>
     </div>
   );
 }

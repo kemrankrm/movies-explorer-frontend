@@ -5,7 +5,7 @@ import Header from "../Header/Header";
 const Profile = () => {
     return (
         <>
-        <Header isLoggedIn={true}/>
+        {/*<Header isLoggedIn={true}/>*/}
         <section className={'profile'}>
             <h2 className={'profile__greating'}>
                 Привет, Кемран!
