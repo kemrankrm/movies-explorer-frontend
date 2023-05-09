@@ -124,9 +124,7 @@
 
         background-color: #202020;
     }
-}
 
-@media screen and (max-width: 768px) {
     .header__nav-button {
         visibility: visible;
         border: none;
@@ -137,7 +135,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 767px) {
     .header {
         height: 74px;
         padding: 0 14px;
@@ -164,6 +162,5 @@
         width: 100vw;
         height: 780px;
         padding: 144px 10px 46px;
-        /*justify-content: flex-start;*/
     }
 }

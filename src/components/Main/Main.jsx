@@ -1,11 +1,5 @@
 import './Main.css';
-import Promo from "../Promo/Promo";
-import AboutProject from "../AboutProject/AboutProject";
-import Techs from "../Techs/Techs";
-import Student from "../Student/Student";
-import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
-import {Route, Routes, useLocation, useNavigate} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";

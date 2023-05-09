@@ -57,7 +57,7 @@
     display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1279px) {
     .navigation {
         position: static;
         width: 100%;
@@ -91,7 +91,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 767px) {
     .navigation__item {
         margin: 0 0 24px;
         font-size: 18px;

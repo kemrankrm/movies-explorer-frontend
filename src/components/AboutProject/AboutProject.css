@@ -84,10 +84,12 @@
 
     .about__content {
         margin-bottom: 93px;
+        gap: 0 30px;
     }
 
     .about__text {
-        max-width: 319px;
+        min-width: 319px;
+        /*max-width: auto;*/
     }
 
     .about__description {
@@ -98,11 +100,11 @@
     }
 
     .about__backend {
-        width: 140px;
+        width: 20.959%;
     }
 
     .about__frontend {
-        width: 528px;
+        width: 79.041%;
     }
 
     .about__cite {
@@ -112,20 +114,21 @@
 }
 
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 767px) {
     .about {
         padding: 70px 18px;
     }
 
     .about__content {
         margin: 60px auto;
-        width: 284px;
+        width: 100%;
 
         flex-direction: column;
     }
 
     .about__text {
         margin-bottom: 56px;
+        min-width: auto;
     }
 
     .about__text:last-of-type {
@@ -146,11 +149,11 @@
     }
 
     .about__backend {
-        width: 100px;
+        width: 35.212%;
     }
 
     .about__frontend {
-        width: 184px;
+        width: 64.779%;
     }
 
     .about__period {
