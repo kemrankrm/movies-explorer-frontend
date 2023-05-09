@@ -113,7 +113,6 @@
 }
 
 .search-form__switch:checked + .search-form__pseudo {
-    /*display: flex;*/
     background-image: url("../../images/smalltumbon.svg");
     background-repeat: no-repeat;
     background-size: contain;
@@ -139,7 +138,7 @@
 }
 
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 767px) {
     .search-form {
         padding: 84px 14px 50px;
     }

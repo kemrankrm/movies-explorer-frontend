@@ -1,8 +1,8 @@
 import './ProfileButton.css'
 import profileIcon from "../../images/profileIconSvg.svg";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
-const ProfileButton = () => {
+const ProfileButton = ({ onClose }) => {
     const navigate = useNavigate()
 
     const handleRoute = () => {

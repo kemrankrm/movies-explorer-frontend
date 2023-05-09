@@ -3,6 +3,8 @@
     padding: 70px 70px 0;
     margin: 0 auto;
 
+    display: flex;
+
     box-sizing: border-box;
 }
 
@@ -21,12 +23,14 @@
     }
 
     .movies-list__container {
+        max-width: none;
+        margin: 0 auto;
         grid-template-columns: repeat(2, 342px);
         gap: 35px 24px;
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 767px) {
     .movies-list {
         padding: 40px 10px 30px;
     }

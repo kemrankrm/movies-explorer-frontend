@@ -94,8 +94,8 @@ const Header = () => {
                         <div className={'header__overlay'} onClick={handleNavigationClose}></div>
                         <div className={'header__side-menu'}>
                             <button className={'header__close-button'} onClick={handleNavigationClose}></button>
-                            <Navigation />
-                            <ProfileButton />
+                            <Navigation onClose={handleNavigationClose}/>
+                            <ProfileButton onClose={handleNavigationClose}/>
                         </div>
                     </>
                 }

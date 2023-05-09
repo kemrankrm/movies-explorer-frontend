@@ -112,7 +112,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 767px) {
     .card__header {
         min-height: 46px;
     }

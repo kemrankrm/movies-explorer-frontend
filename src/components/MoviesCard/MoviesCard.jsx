@@ -15,8 +15,6 @@ const MoviesCard = ({ title, duration, saved, image }) => {
             setIsSaved(false)
         }
     }, [location])
-    console.log('location,', location)
-
 
     return (
         <div className={'card'}>

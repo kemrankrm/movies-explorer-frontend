@@ -128,7 +128,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 767px) {
     .register {
         padding: 0 30px 30px;
     }
