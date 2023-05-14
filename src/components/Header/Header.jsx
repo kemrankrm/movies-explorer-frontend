@@ -37,7 +37,7 @@ const Header = () => {
     }, [location]);
 
     const handleScreenResize = () => {
-        if (window.innerWidth > 1279) {
+        if (window.innerWidth > 768) {
             setIsDesktop(true)
         } else {
             setIsDesktop(false)

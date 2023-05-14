@@ -1,5 +1,5 @@
 import './Navigation.css'
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import classNames from "classnames";
 
 const Navigation = ({ onClose }) => {
