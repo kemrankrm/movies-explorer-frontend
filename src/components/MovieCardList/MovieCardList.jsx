@@ -18,7 +18,7 @@ const MoviesCardList = ({ type }) => {
                             />
                         )
                     }
-                    if (type === 'all') {
+                    else if (type === 'all') {
                         return (
                             <MoviesCard
                                 title={item.title}

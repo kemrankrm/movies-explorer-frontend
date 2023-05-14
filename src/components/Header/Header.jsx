@@ -83,7 +83,7 @@ const Header = () => {
 
     return (
         <>
-            <section className={'header'}>
+            <header className={'header'}>
                 <img className={'header__logo'} alt={'logo'} id={'main'} src={logo} onClick={handleRoute}/>
                 { isLoggedIn && isDesktop && <Navigation /> }
                 { isLoggedIn &&
@@ -121,7 +121,7 @@ const Header = () => {
                             </button>
                         </div>
                 }
-            </section>
+            </header>
         </>
     )
 }

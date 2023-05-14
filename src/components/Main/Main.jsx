@@ -11,7 +11,7 @@ import {Home} from "../Home/Home";
 const Main = () => {
     return (
         <>
-            <section className={'main'}>
+            <main className={'main'}>
                 <Routes>
                     <Route exact path={'/'} element={<Home/>}/>
                     <Route path={'/movies'} element={<Movies/>}/>
@@ -21,7 +21,7 @@ const Main = () => {
                     <Route path={'/signup'} element={<Register/>}/>
                     <Route path={'*'} element={<NotFound/>}/>
                 </Routes>
-            </section>
+            </main>
         </>
     )
 }

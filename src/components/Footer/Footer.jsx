@@ -2,7 +2,7 @@ import './Footer.css'
 
 const Footer = () => {
     return (
-        <section className={'footer'}>
+        <footer className={'footer'}>
             <p className={'footer__description'}>
                 Учебный проект Яндекс.Практикум х BeatFilm.
             </p>
@@ -13,7 +13,7 @@ const Footer = () => {
                     <a className={'footer__link'} href={'#'}>Github</a>
                 </div>
             </div>
-        </section>
+        </footer>
     )
 }
 
