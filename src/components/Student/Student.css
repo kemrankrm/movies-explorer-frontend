@@ -1,0 +1,21 @@
+.student {
+    max-width: 1280px;
+
+    margin: 0 auto;
+    padding: 110px 70px 125px;
+    box-sizing: border-box;
+
+    color: #FFF;
+}
+
+@media screen and (max-width: 1279px) {
+    .student {
+        padding: 90px 50px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .student {
+        padding: 70px 14px;
+    }
+}

@@ -1,0 +1,183 @@
+.search-form {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 70px 70px 48px;
+
+    box-sizing: border-box;
+
+    font-family: Inter, sans-serif;
+}
+
+.search-form__search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 0 13px;
+    border: none;
+    border-bottom: 1px solid #424242;
+
+    margin: 0 0 32px;
+}
+
+.search-form__checkbox {
+    display: flex;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.search-form__input {
+    background-color: transparent;
+    width: 90%;
+
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 34px;
+    letter-spacing: 0;
+    text-align: left;
+
+    box-sizing: border-box;
+    margin: 0;
+
+    border: none;
+
+    color: #FFFFFF;
+
+    transition: all .2s ease-in-out;
+}
+
+.search-form__input::placeholder {
+    color: #8B8B8B;
+}
+
+.search-form__input:hover {
+    filter: brightness(1.7);
+    cursor: pointer;
+}
+
+.search-form__input:focus {
+    cursor: text;
+}
+
+.search-form__button {
+    width: 80px;
+    height: 34px;
+    background-image: url("../../images/find-button.svg");
+    background-position: center;
+
+    border: none;
+    border-radius: 48px;
+    background-color: transparent;
+    padding: 0;
+    box-sizing: border-box;
+
+    transition: all .2s ease-in-out;
+}
+
+.search-form__button:hover {
+    opacity: .7;
+    scale: 1.02;
+    cursor: pointer;
+}
+
+.search-form__button:active {
+    scale: .97;
+    opacity: 1;
+    filter: brightness(1.2);
+}
+
+.search-form__switch {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    clip-path: inset(0 0 0 0);
+    visibility: hidden;
+}
+
+.search-form__label-text {
+    color: #FFFFFF;
+}
+
+.search-form__pseudo {
+    display: inline-block;
+    vertical-align: middle;
+    width: 36px;
+    height: 20px;
+    box-sizing: border-box;
+    overflow: visible;
+    background-image: url("../../images/smalltumboff.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.search-form__switch:checked + .search-form__pseudo {
+    background-image: url("../../images/smalltumbon.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+
+@media screen and (max-width: 1279px) {
+    .search-form {
+        padding: 80px 30px 60px;
+    }
+
+    .search-form__search {
+        margin-bottom: 29px;
+    }
+
+    .search-form__checkbox {
+        justify-content: flex-end;
+    }
+
+    .search-form__input {
+        width: 628px;
+    }
+}
+
+
+@media screen and (max-width: 767px) {
+    .search-form {
+        padding: 84px 14px 50px;
+    }
+
+    .search-form__search {
+        padding-bottom: 9px;
+        margin-bottom: 40px;
+        box-sizing: border-box;
+    }
+
+    .search-form__input {
+        width: 212px;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 22px;
+
+    }
+
+    .search-form__checkbox {
+        justify-content: center;
+
+        font-family: Inter, sans-serif;
+        font-size: 11px;
+        font-weight: 400;
+        line-height: 18px;
+        letter-spacing: 0;
+        text-align: left;
+        color: #FFFFFF;
+
+    }
+
+    .search-form__switch-label {
+        display: flex;
+        flex-direction: row-reverse;
+
+        justify-content: center;
+    }
+
+    .search-form__label-text {
+        margin-right: 13px;
+    }
+}

@@ -1,0 +1,135 @@
+.card {
+    box-sizing: border-box;
+    background-color: #222222;
+
+    font-family: Inter, sans-serif;
+
+    border-radius: 6px;
+}
+
+.card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    min-height: 54px;
+    padding: 0 18px;
+
+    box-sizing: border-box;
+}
+
+.card__title {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0;
+    text-align: left;
+    color: #FFFFFF;
+
+    margin: 0;
+}
+
+.card__duration {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0;
+    text-align: right;
+    color: #8B8B8B;
+
+    margin: 0;
+}
+
+.card__image-container {
+    width: 100%;
+    height: 200px;
+    background-color: #424242;
+    overflow: hidden;
+
+    display: flex;
+}
+
+.card__image {
+    object-position: center;
+    object-fit: contain;
+}
+
+.card__button-container {
+    min-height: 65px;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card__button {
+    border: none;
+    border-radius: 30px;
+
+    width: 100px;
+    height: 29px;
+
+    background-color: #313131;
+
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 11px;
+    letter-spacing: 0;
+    text-align: center;
+    color: #FFFFFF;
+
+    cursor: pointer;
+
+    transition: all .2s ease-in-out;
+}
+
+.card__button:hover {
+    scale: 1.05;
+}
+
+.card__button:active {
+    scale: 1;
+    filter: brightness(1.3);
+}
+
+.card__button_saved {
+    background-image: url("../../images/save6d.svg");
+}
+
+.card__button_delete {
+    background-image: url("../../images/delete-movie-icon.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+@media screen and (max-width: 1279px){
+    .card__image-container {
+        height: 190px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .card__header {
+        min-height: 46px;
+    }
+
+    .card__title {
+        font-size: 12px;
+    }
+
+    .card__duration {
+        font-size: 10px;
+    }
+
+    .card__image-container {
+        height: 168px;
+    }
+
+    .card__button-container {
+        min-height: 57px;
+    }
+}

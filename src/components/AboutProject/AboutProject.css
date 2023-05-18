@@ -1,0 +1,169 @@
+.about {
+    max-width: 1280px;
+    padding: 110px 70px;
+    box-sizing: border-box;
+    margin: 0 auto;
+
+    font-family: Inter, sans-serif;
+    text-align: left;
+    letter-spacing: -0.04em;
+    color: #FFF;
+}
+
+.about__content {
+    display: flex;
+    justify-content: space-between;
+    margin: 70px 0 110px;
+}
+
+.about__text {
+    max-width: 550px;
+}
+
+.about__title {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+
+    margin: 0 0 26px;
+}
+
+.about__description {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    margin: 0;
+    font-weight: 400;
+}
+
+.about__timeline {
+    display: flex;
+}
+
+.about__backend {
+    width: 20%;
+}
+
+.about__frontend {
+    width: 80%;
+}
+
+.about__period {
+    min-height: 36px;
+    margin: 0 0 14px;
+    font-weight: 400;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color:#303030;
+}
+
+.about__period_black {
+    color: #000;
+    background-color: #3DDC84;
+}
+
+.about__cite {
+    margin: 0;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0;
+    text-align: center;
+    color: #8B8B8B;
+
+}
+
+@media screen and (max-width: 1279px) {
+    .about {
+        padding: 90px 50px;
+    }
+
+    .about__content {
+        margin-bottom: 93px;
+        gap: 0 30px;
+    }
+
+    .about__text {
+        min-width: 319px;
+        /*max-width: auto;*/
+    }
+
+    .about__description {
+        font-size: 12px;
+        line-height: 18px;
+        letter-spacing: 0;
+        margin: 0;
+    }
+
+    .about__backend {
+        width: 20.959%;
+    }
+
+    .about__frontend {
+        width: 79.041%;
+    }
+
+    .about__cite {
+        font-family: Suisse Intl, Inter, sans-serif;
+        font-weight: 400;
+    }
+}
+
+
+@media screen and (max-width: 767px) {
+    .about {
+        padding: 70px 18px;
+    }
+
+    .about__content {
+        margin: 60px auto;
+        width: 100%;
+
+        flex-direction: column;
+    }
+
+    .about__text {
+        margin-bottom: 56px;
+        min-width: auto;
+    }
+
+    .about__text:last-of-type {
+        margin-bottom: 0;
+    }
+
+    .about__title {
+        margin-bottom: 16px;
+        font-size: 18px;
+        line-height: 22px;
+
+    }
+
+    .about__description {
+        font-size: 11px;
+        line-height: 16px;
+
+    }
+
+    .about__backend {
+        width: 35.212%;
+    }
+
+    .about__frontend {
+        width: 64.779%;
+    }
+
+    .about__period {
+        font-size: 11px;
+        line-height: 13px;
+    }
+
+    .about__cite {
+        font-family: Suisse Intl, Inter, sans-serif;
+        font-size: 11px;
+        line-height: 13px;
+    }
+}

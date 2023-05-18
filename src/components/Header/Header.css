@@ -1,0 +1,166 @@
+.header {
+    max-width: 1280px;
+    min-height: 74px;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 70px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.header__logo {
+    width: 38px;
+    height: 38px;
+}
+
+.header__nav-button {
+    visibility: hidden;
+}
+
+.header__close-button {
+    position: absolute;
+    top: 22.5px;
+    right: 22.5px;
+    width: 22px;
+    height: 22px;
+
+    border: none;
+    padding: 0;
+
+    background-color: transparent;
+    background-image: url("../../images/closeButtonSideMenu.svg");
+    background-size: 25px;
+    background-position: center;
+}
+
+.header__button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__signup {
+    background-color: transparent;
+    border: none;
+
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0;
+    color: #FFF;
+    padding: 0;
+
+    margin-right: 30px;
+
+    transition: all .2s ease-in-out;
+}
+
+.header__signup:hover {
+    scale: 1.03;
+    opacity: .7;
+    cursor: pointer;
+}
+
+.header__signin {
+    width: 76px;
+    height: 32px;
+
+    border-radius: 3px;
+    border: none;
+
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0;
+    color: #000;
+
+    background-color: #3DDC84;
+    transition: all .2s ease-in-out;
+}
+
+.header__signin:hover {
+    scale: 1.03;
+    opacity: .7;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 768px) {
+    .header {
+        padding: 0 30px;
+    }
+
+    .header__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100vh;
+
+        background-color: #000000;
+        opacity: .5;
+    }
+
+    .header__side-menu {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 520px;
+        height: 1024px;
+
+        padding: 159px 0 90px;
+        box-sizing: border-box;
+
+        background-color: #202020;
+    }
+
+    .header__nav-button {
+        visibility: visible;
+        border: none;
+        background-color: transparent;
+        background-image: url("../../images/navMenuButton.svg");
+        width: 44px;
+        height: 44px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        height: 74px;
+        padding: 0 14px;
+    }
+
+    .header__signup {
+        font-size: 10px;
+        line-height: 16px;
+        margin-right: 14px;
+        transition: all .5s ease-in-out;
+    }
+
+    .header__signin {
+        font-size: 10px;
+        font-weight: 500;
+        line-height: 16px;
+        text-align: center;
+
+        width: 54px;
+        height: 26px;
+    }
+
+    .header__side-menu {
+        width: 100vw;
+        height: 780px;
+        padding: 144px 10px 46px;
+    }
+}
