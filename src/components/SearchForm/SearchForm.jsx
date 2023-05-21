@@ -1,7 +1,8 @@
 import './SearchForm.css'
 import {useState} from "react";
+import { api } from "../../utils/utils";
 
-const SearchForm = () => {
+const SearchForm = ({ setMovies }) => {
     const [switchOn, setSwitchOn] = useState(true)
     const [movieNameInput, setMovieNameInput] = useState('');
 
@@ -9,9 +10,20 @@ const SearchForm = () => {
         setMovieNameInput(e.target.value);
     }
 
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+
+        let moviesList;
+        api.getMovies()
+            .then(res => {
+                moviesList = res;
+                setMovies(moviesList);
+            })
+    }
+
     return (
         <section className={'search-form'}>
-            <form className={'search-form__form'}>
+            <form className={'search-form__form'} onSubmit={handleSearchSubmit}>
                 <fieldset className={'search-form__search'}>
                     <input
                         type={'text'}

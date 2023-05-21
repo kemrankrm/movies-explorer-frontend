@@ -151,3 +151,6 @@ export const moviesList = [
         saved: false,
     }
 ]
+
+export const moviesUrl = 'https://api.nomoreparties.co/beatfilm-movies';
+export const baseUrl = 'https://api.nomoreparties.co/'

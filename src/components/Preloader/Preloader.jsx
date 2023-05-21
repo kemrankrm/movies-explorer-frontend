@@ -1,9 +1,9 @@
 import './Preloader.css'
 
-const Preloader = () => {
+const Preloader = ({ onClick }) => {
     return (
         <section className={'preloader'}>
-            <button className={'preloader__button'}>
+            <button className={'preloader__button'} onClick={onClick}>
                 Еще
             </button>
         </section>
