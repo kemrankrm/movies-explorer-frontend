@@ -85,7 +85,7 @@ const Header = () => {
         <>
             <header className={'header'}>
                 <img className={'header__logo'} alt={'logo'} id={'main'} src={logo} onClick={handleRoute}/>
-                { isLoggedIn && isDesktop && <Navigation /> }
+                { isLoggedIn && isDesktop && <Navigation isDesktop={isDesktop}/> }
                 { isLoggedIn &&
                     <button className={'header__nav-button'} onClick={handleNavigationOpen}></button>
                 }
@@ -94,7 +94,9 @@ const Header = () => {
                         <div className={'header__overlay'} onClick={handleNavigationClose}></div>
                         <div className={'header__side-menu'}>
                             <button className={'header__close-button'} onClick={handleNavigationClose}></button>
-                            <Navigation onClose={handleNavigationClose}/>
+                            <Navigation
+                                onClose={handleNavigationClose}
+                            />
                             <ProfileButton onClose={handleNavigationClose}/>
                         </div>
                     </>

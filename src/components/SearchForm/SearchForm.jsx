@@ -1,25 +1,47 @@
-import './SearchForm.css'
-import {useState} from "react";
-import { api } from "../../utils/utils";
+import './SearchForm.css';
+import { useEffect, useState } from "react";
+import {api, handleSearch, mainApi} from "../../utils/utils";
 
-const SearchForm = ({ setMovies }) => {
-    const [switchOn, setSwitchOn] = useState(true)
-    const [movieNameInput, setMovieNameInput] = useState('');
+const SearchForm = ({ setMovies, savedMovies }) => {
+    const [movieSearchInput, setMovieSearchInput] = useState({ keyword: '', checkbox: null });
 
     const handleMovieNameInput = (e) => {
-        setMovieNameInput(e.target.value);
+        setMovieSearchInput({ ...movieSearchInput, keyword: e.target.value });
+    }
+
+    // console.log(movieSearchInput);
+
+    const handleCheckBoxClick = () => {
+        setMovieSearchInput({ ...movieSearchInput, checkbox: !movieSearchInput.checkbox })
     }
 
     const handleSearchSubmit = (e) => {
         e.preventDefault();
+        localStorage.setItem('searchInput', JSON.stringify(movieSearchInput));
 
-        let moviesList;
-        api.getMovies()
-            .then(res => {
-                moviesList = res;
-                setMovies(moviesList);
-            })
-    }
+        if (savedMovies) {
+            const token = localStorage.getItem('jwt');
+            mainApi.getMovies(token)
+                .then(res => {
+                    const filteredMoviesList = handleSearch(movieSearchInput.keyword, movieSearchInput.checkbox, res)
+
+                    localStorage.setItem('foundSavedMovies', JSON.stringify(filteredMoviesList));
+                    setMovies(filteredMoviesList);
+                });
+        } else {
+            api.getMovies()
+                .then(res => {
+                    const filteredMoviesList = handleSearch(movieSearchInput.keyword, movieSearchInput.checkbox, res)
+
+                    localStorage.setItem('foundMovies', JSON.stringify(filteredMoviesList));
+                    setMovies(filteredMoviesList);
+                });
+        }
+    };
+
+    useEffect(() => {
+        setMovieSearchInput(JSON.parse(localStorage.getItem('searchInput')));
+    }, []);
 
     return (
         <section className={'search-form'}>
@@ -29,9 +51,8 @@ const SearchForm = ({ setMovies }) => {
                         type={'text'}
                         placeholder={'Фильм'}
                         className={'search-form__input'}
-                        required={true}
                         onChange={handleMovieNameInput}
-                        value={movieNameInput}
+                        value={movieSearchInput.keyword}
                     />
                     <button type={"submit"} className={'search-form__button'}></button>
                 </fieldset>
@@ -40,13 +61,13 @@ const SearchForm = ({ setMovies }) => {
                         <input
                             type={'checkbox'}
                             className={'search-form__switch'}
-                            onClick={() => setSwitchOn(!switchOn)}
-                            defaultChecked={switchOn}
+                            onClick={handleCheckBoxClick}
+                            defaultChecked={movieSearchInput.checkbox}
                         />
                         <span className={'search-form__pseudo'}></span>
                         <span className={'search-form__label-text'}>
-                            Короткометражки
-                        </span>
+              Короткометражки
+            </span>
                     </label>
                 </fieldset>
             </form>
@@ -54,4 +75,4 @@ const SearchForm = ({ setMovies }) => {
     )
 }
 
-export default SearchForm
+export default SearchForm;

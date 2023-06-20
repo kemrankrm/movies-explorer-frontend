@@ -1,36 +1,97 @@
 import './Profile.css'
 import classNames from "classnames";
+import {useContext, useEffect} from "react";
+import {userData} from "../../context/context";
+import {useFormWithValidation} from "../../hooks/useForm";
+import auth from "../../utils/auth";
+import {handleUrlSave} from "../../utils/utils";
+import {useLocation} from "react-router-dom";
 
-const Profile = () => {
+const Profile = ({ onLogout, setUser }) => {
+    const {values, setValues, handleChange, resetFrom, errors, isValid} = useFormWithValidation();
+    const userInfo = useContext(userData);
+
+    const location = useLocation();
+    console.log(location.pathname);
+    localStorage.setItem('url', location.pathname);
+
+    const handleSubmit = () => {
+        console.log('VALUES', values);
+        const token = localStorage.getItem('jwt');
+        auth.updateCurrentProfile(values, token)
+            .then(res => {
+                console.log(res)
+                setUser({ name: res.name, email: res.email });
+            })
+    }
+
+    useEffect(() => {
+        setValues(userInfo);
+    }, [])
+
+    console.log('VALUES', values);
+
     return (
         <>
         <section className={'profile'}>
             <h2 className={'profile__greating'}>
-                Привет, Кемран!
+                Привет, {userInfo.name}
             </h2>
-            <div className={'profile__info'}>
+            <form className={'profile__info'}>
                 <div className={'profile__name'}>
                     <p className={'profile__title'}>
                         Имя
                     </p>
-                    <p className={'profile__content'}>
-                        Кемран
-                    </p>
+                    <label className={'profile__content'}>
+                        <input
+                            type={'text'}
+                            id={'name'}
+                            name={'name'}
+                            autoComplete={'off'}
+                            placeholder={userInfo.name}
+                            className={classNames('profile__input', 'profile__input_name')}
+                            onChange={handleChange}
+                            required={true}
+                            value={values.name || ''}
+                        />
+                        <span className="form-input__error form-input__error_active">
+                        {errors.name || ""}
+                        </span>
+                    </label>
                 </div>
                 <div className={'profile__email'}>
                     <p className={'profile__title'}>
                         E-mail
                     </p>
-                    <p className={'profile__content'}>
-                        kemran.karimov@gmail.com
-                    </p>
+                    <label className={'profile__content'}>
+                        <input
+                            type={'text'}
+                            id={'email'}
+                            name={'email'}
+                            autoComplete={'off'}
+                            placeholder={userInfo.email}
+                            className={classNames('profile__input', 'profile__input_name')}
+                            onChange={handleChange}
+                            required={true}
+                            value={values.email || ''}
+                        />
+                        <span className="form-input__error form-input__error_active">
+                        {errors.name || ""}
+                        </span>
+                    </label>
                 </div>
-            </div>
+            </form>
             <div className={'profile__button-container'}>
-                <button className={classNames('profile__button', 'profile__button_edit')}>
+                <button
+                    className={classNames('profile__button', 'profile__button_edit')}
+                    onClick={handleSubmit}
+                >
                     Редактировать
                 </button>
-                <button className={classNames('profile__button', 'profile__button_logout')}>
+                <button
+                    className={classNames('profile__button', 'profile__button_logout')}
+                    onClick={onLogout}
+                >
                     Выйти из аккаунта
                 </button>
             </div>

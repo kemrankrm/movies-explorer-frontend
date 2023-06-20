@@ -55,6 +55,31 @@
 .profile__content {
     font-weight: 400;
     margin: 0;
+    position: relative;
+}
+
+.form-input__error_active {
+
+}
+
+.profile__input {
+    background-color: transparent;
+    border: none;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.profile__input:focus {
+    outline: none;
+}
+
+.profile__input_name {
+    margin: 0;
+}
+
+.profile__input::placeholder {
+    color: #FFFFFF;
+    margin: 0;
 }
 
 .profile__button-container {
