@@ -58,17 +58,4 @@ export class MainApi {
         })
             .catch(e => console.log(e));
     }
-
-    getProfile(token) {
-        return fetch(`${this._baseUrl}/users/me`, {
-            method: "GET",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
-        })
-            .then(res => res)
-            .catch((e => console.log(e)))
-    }
 }

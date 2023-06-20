@@ -2,7 +2,6 @@ import './Login.css'
 import classNames from "classnames";
 import {Link, useNavigate} from "react-router-dom";
 import icon from '../../images/logo.svg'
-import {useState} from "react";
 import auth from "../../utils/auth";
 import {useFormWithValidation} from "../../hooks/useForm";
 
@@ -11,13 +10,10 @@ const Login = ({ setLoggedIn, onLogin }) => {
 
     const navigate = useNavigate();
 
-    console.log(values);
-
     const handleFormSubmit = (e) => {
         e.preventDefault();
         auth.login(values)
             .then(res => {
-                console.log(res)
                 if (res.token) {
                     resetFrom()
                     const token = res.token;

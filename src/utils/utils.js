@@ -1,16 +1,14 @@
 import {MovieApi} from "./MovieApi";
-import {moviesUrl} from "./constants";
+import {mainApiUrl, moviesUrl} from "./constants";
 import {MainApi} from "./MainApi";
 
 export const api = new MovieApi(moviesUrl);
 
-export const mainApi = new MainApi('https://api.kemrankrm-mesto.nomoredomains.work');
+export const mainApi = new MainApi(mainApiUrl);
 
 
 export const handleWindowResize = () => {
-    const windowWidth = window.innerWidth;
-
-    return windowWidth
+    return window.innerWidth
 }
 
 export const handleUrlSave = (url) => {

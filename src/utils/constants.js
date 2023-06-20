@@ -154,4 +154,4 @@ export const moviesList = [
 
 export const moviesUrl = 'https://api.nomoreparties.co/beatfilm-movies';
 export const baseUrl = 'https://api.nomoreparties.co'
-export const mainApiUrl = 'http://localhost:3000';
+export const mainApiUrl = 'https://api.kemrankrm-mesto.nomoredomains.work';

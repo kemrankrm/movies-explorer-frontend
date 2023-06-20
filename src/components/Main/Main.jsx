@@ -15,7 +15,6 @@ import {mainApi} from "../../utils/utils";
 const Main = ({ isLoggedIn, setLoggedIn, setLoggedOut, setUser }) => {
     const [windowWidth, setWindowWidth] = useState(null);
     const [savedMovies, setSavedMovies] = useState([]);
-    // console.log('SAVED MOVIES IN MAIN', savedMovies);
 
     const handleLogin = () => {
         setLoggedIn()
