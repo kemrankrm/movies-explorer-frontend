@@ -1,40 +1,15 @@
 import './Header.css';
 import logo from '../../images/logo.svg'
-import {useLocation, useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {useEffect, useState} from "react";
 import Navigation from "../Navigation/Navigation";
 import ProfileButton from "../ProfileButton/ProfileButton";
 
-const Header = () => {
+const Header = ({ isLoggedIn }) => {
 
     const navigate = useNavigate();
-    const location = useLocation().pathname;
     const [isNavOpen, setIsNavOpen] = useState(false)
     const [isDesktop, setIsDesktop] = useState(true)
-    const [isLoggedIn, setIsLoggedIn] = useState(null);
-
-    useEffect(() => {
-        switch (location) {
-            case '/':
-                setIsLoggedIn(false);
-                break;
-
-            case '/movies':
-                setIsLoggedIn(true);
-                break;
-
-            case '/saved-movies':
-                setIsLoggedIn(true);
-                break;
-
-            case '/profile':
-                setIsLoggedIn(true);
-                break;
-
-            default:
-                setIsLoggedIn(true);
-        }
-    }, [location]);
 
     const handleScreenResize = () => {
         if (window.innerWidth > 768) {

@@ -45,7 +45,7 @@ function App() {
   return (
     <div className="App">
         <userData.Provider value={user}>
-            <Header/>
+            <Header isLoggedIn={isLoggedIn}/>
             <Main
                 isLoggedIn={isLoggedIn}
                 setLoggedIn={handleLoggedIn}

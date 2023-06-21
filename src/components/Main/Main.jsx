@@ -101,7 +101,12 @@ const Main = ({ isLoggedIn, setLoggedIn, setLoggedOut, setUser }) => {
                     />
 
                     {/*OPEN ROUTES*/}
-                    <Route exact path={'/'} element={<Home/>}/>
+                    <Route
+                        exact path={'/'}
+                        element={
+                        <Home isLoggedIn={isLoggedIn}/>
+                    }
+                    />
                     <Route
                         path={'/signin'}
                         element={<Login setLoggedIn={setLoggedIn}/>}

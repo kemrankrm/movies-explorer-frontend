@@ -14,7 +14,7 @@ const Navigation = ({ onClose, isDesktop }) => {
         <nav className={'navigation'}>
             <NavLink
                    to={'/'}
-                   className={({isActive}) => `${isActive ? 'navigation__item_active' : classNames('navigation__item', 'navigation__item_home')}`}
+                   className={({isActive}) => `${isActive ? 'navigation__item_active navigation__item_home' : classNames('navigation__item', 'navigation__item_home')}`}
                    onClick={handleTabClick}
             >
                 Главная
