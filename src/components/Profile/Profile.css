@@ -115,6 +115,10 @@
     color: #FFFFFF;
 }
 
+.profile__button_disabled {
+    color: #424242;
+}
+
 .profile__button_logout {
     color: #EE3465;
 }

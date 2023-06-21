@@ -2,11 +2,10 @@ import './Register.css'
 import classNames from "classnames";
 import {Link, useNavigate} from "react-router-dom";
 import icon from '../../images/logo.svg'
-import {useEffect, useState} from "react";
 import auth from "../../utils/auth";
 import {useFormWithValidation} from "../../hooks/useForm";
 
-const Register = ({ setLoggedIn, onRegister}) => {
+const Register = ({ setLoggedIn}) => {
     const navigate = useNavigate();
 
     const {values, handleChange, resetFrom, errors, isValid} = useFormWithValidation();

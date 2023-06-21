@@ -3,7 +3,6 @@ import Main from "../Main/Main";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import {useEffect, useState} from "react";
-import {mainApi} from "../../utils/utils";
 import {userData} from "../../context/context";
 import auth from "../../utils/auth";
 import {useNavigate} from "react-router-dom";
@@ -39,8 +38,6 @@ function App() {
         } else console.log('NOT TOKEN', token);
 
     }, [])
-
-
 
   return (
     <div className="App">

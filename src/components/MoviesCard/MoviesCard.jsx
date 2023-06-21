@@ -1,20 +1,6 @@
 import './MoviesCard.css'
-import classNames from "classnames";
-import {useEffect, useState} from "react";
-import {useLocation} from "react-router-dom";
 
 const MoviesCard = ({ title, duration, saved, image, onSave, onRemove, id }) => {
-
-    const location = useLocation();
-    const [isSaved, setIsSaved] = useState(false);
-
-    useEffect(() => {
-        if (location.pathname === '/saved-movies') {
-            setIsSaved(true)
-        } else {
-            setIsSaved(false)
-        }
-    }, [location])
 
     return (
         <div className={'card'} id={id}>

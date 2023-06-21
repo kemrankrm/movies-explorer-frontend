@@ -1,5 +1,5 @@
 import './Main.css';
-import {Navigate, Route, Routes, useNavigate} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";
@@ -30,7 +30,6 @@ const Main = ({ isLoggedIn, setLoggedIn, setLoggedOut, setUser }) => {
     }
 
     const handleMovieSave = (movies) => {
-        // console.log('HANDLE MOVIE SAVE   ', movies)
         setSavedMovies(movies)
     }
 

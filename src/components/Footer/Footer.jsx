@@ -9,8 +9,19 @@ const Footer = () => {
             <div className={'footer__flex'}>
                 <p className={'footer__date'}>&copy;2023</p>
                 <div className={'footer__sources'}>
-                    <a className={'footer__link'} href={'#'}>Яндекс.Практикум</a>
-                    <a className={'footer__link'} href={'#'}>Github</a>
+                    <a target={"_blank"}
+                          className={'footer__link'}
+                          href={'https://practicum.yandex.ru'}
+                    >
+                        Яндекс.Практикум
+                    </a>
+                    <a
+                        target={"_blank"}
+                        className={'footer__link'}
+                        href={'https://github.com/kemrankrm'}
+                    >
+                        Github
+                    </a>
                 </div>
             </div>
         </footer>

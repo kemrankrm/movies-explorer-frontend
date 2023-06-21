@@ -3,7 +3,7 @@ import SearchForm from "../SearchForm/SearchForm";
 import MovieCardList from "../MovieCardList/MovieCardList";
 import Preloader from "../Preloader/Preloader";
 import {useEffect, useRef, useState} from "react";
-import {api, handleWindowResize, mainApi} from "../../utils/utils";
+import {api} from "../../utils/utils";
 import {useLocation} from "react-router-dom";
 
 const Movies = ({ windowSize, savedMovies, setSavedMovies }) => {

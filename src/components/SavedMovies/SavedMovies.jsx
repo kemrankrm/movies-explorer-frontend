@@ -6,7 +6,6 @@ import {useLocation} from "react-router-dom";
 import Preloader from "../Preloader/Preloader";
 
 const SavedMovies = ({ windowSize, savedMovies, setSavedMovies }) => {
-    const [movies, setMovies] = useState([]);
     const [moviesToShow, setMoviesToShow] = useState([]);
     const [cardsNumber, setCardsNumber] = useState({ initialCardNum: 12, cardsInRow: 3 })
 

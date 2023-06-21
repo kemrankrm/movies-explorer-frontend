@@ -4,11 +4,10 @@ import {useContext, useEffect} from "react";
 import {userData} from "../../context/context";
 import {useFormWithValidation} from "../../hooks/useForm";
 import auth from "../../utils/auth";
-import {handleUrlSave} from "../../utils/utils";
 import {useLocation} from "react-router-dom";
 
 const Profile = ({ onLogout, setUser }) => {
-    const {values, setValues, handleChange, resetFrom, errors, isValid} = useFormWithValidation();
+    const {values, setValues, handleChange, errors, isValid} = useFormWithValidation();
     const userInfo = useContext(userData);
 
     const location = useLocation();
@@ -83,7 +82,7 @@ const Profile = ({ onLogout, setUser }) => {
             </form>
             <div className={'profile__button-container'}>
                 <button
-                    className={classNames('profile__button', 'profile__button_edit')}
+                    className={`profile__button profile__button_edit ${isValid ? '' : 'profile__button_disabled'}`}
                     onClick={handleSubmit}
                 >
                     Редактировать
