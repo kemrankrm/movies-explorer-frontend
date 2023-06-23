@@ -9,8 +9,6 @@ const SearchForm = ({ setMovies, savedMovies }) => {
         setMovieSearchInput({ ...movieSearchInput, keyword: e.target.value });
     }
 
-    // console.log(movieSearchInput);
-
     const handleCheckBoxClick = () => {
         setMovieSearchInput({ ...movieSearchInput, checkbox: !movieSearchInput.checkbox })
     }
@@ -52,7 +50,7 @@ const SearchForm = ({ setMovies, savedMovies }) => {
                         placeholder={'Фильм'}
                         className={'search-form__input'}
                         onChange={handleMovieNameInput}
-                        value={movieSearchInput.keyword}
+                        value={movieSearchInput.keyword || ''}
                     />
                     <button type={"submit"} className={'search-form__button'}></button>
                 </fieldset>
