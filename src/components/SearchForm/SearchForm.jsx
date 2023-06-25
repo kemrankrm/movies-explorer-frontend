@@ -38,7 +38,11 @@ const SearchForm = ({ setMovies, savedMovies }) => {
     };
 
     useEffect(() => {
-        setMovieSearchInput(JSON.parse(localStorage.getItem('searchInput')));
+        const storedSearchData = JSON.parse(localStorage.getItem('searchInput'));
+
+        if (storedSearchData) {
+            setMovieSearchInput(JSON.parse(localStorage.getItem('searchInput')));
+        }
     }, []);
 
     return (

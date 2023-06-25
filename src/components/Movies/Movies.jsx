@@ -51,15 +51,12 @@ const Movies = ({ windowSize, savedMovies, setSavedMovies }) => {
     }, [windowSize])
 
     useEffect(() => {
-        api.getMovies()
-            .then(res => {
-                const movies = JSON.parse(localStorage.getItem('foundMovies'));
-                if (movies) {
-                    setMovies(movies)
-                } else {
-                    setMovies(res);
-                }
-            })
+
+        const foundMovies = JSON.parse(localStorage.getItem('foundMovies'));
+
+        if (foundMovies) {
+            setMovies(foundMovies);
+        }
     }, [])
 
     return (

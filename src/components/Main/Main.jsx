@@ -21,6 +21,9 @@ const Main = ({ isLoggedIn, setLoggedIn, setLoggedOut, setUser }) => {
     }
 
     const handleLogout = () => {
+        localStorage.removeItem('foundMovies');
+        localStorage.removeItem('foundSavedMovies');
+        localStorage.removeItem('searchInput');
         setLoggedOut()
     }
 
@@ -44,8 +47,6 @@ const Main = ({ isLoggedIn, setLoggedIn, setLoggedOut, setUser }) => {
     useEffect(() => {
         handleWindowResize();
     }, []);
-
-    // console.log('RENDER', Date.now())
 
     useEffect(() => {
         const token = localStorage.getItem('jwt');
