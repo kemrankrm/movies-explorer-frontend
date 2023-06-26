@@ -4,25 +4,42 @@ import {Link, useNavigate} from "react-router-dom";
 import icon from '../../images/logo.svg'
 import auth from "../../utils/auth";
 import {useFormWithValidation} from "../../hooks/useForm";
+import {useError} from "../../hooks/useError";
+import {EMAIL_PATTERN} from "../../utils/constants";
+import {useState} from "react";
+import {Popup} from "../Popup/Popup";
 
-const Register = ({ setLoggedIn}) => {
+const Register = ({ setLoggedIn, setUser }) => {
+
     const navigate = useNavigate();
-
     const {values, handleChange, resetFrom, errors, isValid} = useFormWithValidation();
+    const {error, errorIsOpen, handleErrorClear, handleErrorShowUp} = useError();
+    // const handlePopupOpen = () => {
+    //     setRegisterOk(true)
+    //
+    //     setTimeout(() => {
+    //         setRegisterOk(false)
+    //     }, 5000)
+    // }
 
     const handleFormSubmit = (e) => {
         e.preventDefault()
-        console.log(values)
         resetFrom();
         auth.register(values)
             .then(res => {
+                console.log('REGISTER', res);
+                if (res.message) {
+                    console.log('ERROR MESSAGE SHOW UP');
+                    handleErrorShowUp(res)
+                    return Promise.reject('ошибка')
+                }
                 if (res) {
                     auth.login({ email: values.email, password: values.password })
                         .then(res => {
-                            console.log(res);
                             const token = res.token;
                             localStorage.setItem('jwt', token);
                             navigate('/movies');
+                            console.log('AUTH AUTH', res)
                             setLoggedIn();
                         })
                 } else {
@@ -48,7 +65,10 @@ const Register = ({ setLoggedIn}) => {
                             name={'name'}
                             autoComplete={'off'}
                             className={classNames('register__input', 'register__input_name')}
-                            onChange={handleChange}
+                            onChange={(e) => {
+                                handleChange(e)
+                                handleErrorClear();
+                            }}
                             required={true}
                             value={values.name || ''}
                         />
@@ -63,9 +83,13 @@ const Register = ({ setLoggedIn}) => {
                             type={'email'}
                             id={'email'}
                             name={'email'}
+                            pattern={EMAIL_PATTERN}
                             autoComplete='off'
                             className={classNames('register__input', 'register__input_name')}
-                            onChange={handleChange}
+                            onChange={(e) => {
+                                handleChange(e)
+                                handleErrorClear();
+                            }}
                             required={true}
                             value={values.email || ''}
                         />
@@ -82,7 +106,10 @@ const Register = ({ setLoggedIn}) => {
                             name={'password'}
                             autoComplete={'off'}
                             className={classNames('register__input', 'register__input_name')}
-                            onChange={handleChange}
+                            onChange={(e) => {
+                                handleChange(e)
+                                handleErrorClear();
+                            }}
                             required={true}
                             value={values.password || ''}
                         />
@@ -92,9 +119,14 @@ const Register = ({ setLoggedIn}) => {
                     </label>
                 </fieldset>
                 <button
-                    className={`register__button register__button_${!isValid ? 'disabled' : ''}`}
+                    className={`
+                    register__button 
+                    register__button_${!isValid ? 'disabled' : ''}
+                    ${errorIsOpen ? 'register__button_error' : ''}
+                    `}
                     disabled={!isValid}
-                    type={'submit'}>Зарегистрироваться
+                    type={'submit'}>
+                    {errorIsOpen ? error : 'Зарегистрироваться'}
                 </button>
             </form>
             <p className={'register__note'}>
@@ -103,6 +135,7 @@ const Register = ({ setLoggedIn}) => {
                      Войти
                 </Link>
             </p>
+            {/*{registerOk ? <Popup name={'register'}/> : 'null'}*/}
         </section>
     )
 }

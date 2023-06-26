@@ -25,7 +25,8 @@ const Header = ({ isLoggedIn }) => {
 
     useEffect(() => {
         window.addEventListener('resize', handleScreenResize)
-    })
+        return(() => window.removeEventListener('resize', handleScreenResize))
+    },[])
 
     const handleRoute = (e) => {
         const id = e.target.id;

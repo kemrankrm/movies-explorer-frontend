@@ -13,7 +13,7 @@ export class MainApi {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                country: "HUY EBANIY",
+                country: "Country",
                 director: data.director,
                 duration: data.duration,
                 year: data.year,

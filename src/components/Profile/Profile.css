@@ -110,6 +110,10 @@
     opacity: .8;
 }
 
+.profile__button:disabled {
+    color: #424242;
+}
+
 .profile__button_edit {
     margin-bottom: 16px;
     color: #FFFFFF;

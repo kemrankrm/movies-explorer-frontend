@@ -9,7 +9,7 @@
     box-sizing: border-box;
 }
 
-.navtab__link {
+.navtab__element {
     min-width: 96px;
     min-height: 36px;
 
@@ -28,6 +28,11 @@
     text-align: center;
 }
 
+.navtab__link {
+    text-decoration: none;
+    color: #FFF;
+}
+
 @media screen and (max-width: 1280px) {
     .navtab {
         /*margin-bottom: 30px;*/
@@ -36,11 +41,10 @@
 
 @media screen and (max-width: 320px) {
     .navtab {
-        /*margin: 0 17px;*/
         gap: 6px;
     }
 
-    .navtab__link {
+    .navtab__element {
         font-size: 10px;
 
         min-width: 82px;

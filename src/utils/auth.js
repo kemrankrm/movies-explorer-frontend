@@ -4,15 +4,14 @@ class Auth {
     };
 
     _checkResponse(res) {
-        if (res.ok) {
-            return res.json();
-        }
+        // if (res.ok) {
+        //     return res.json();
+        // }
 
-        if (res.statusText === 'Conflict') {
-            return Promise.reject(`Такой пользователь уже есть`);
-        }
+        // console.log('message', res);
+        return res.json()
 
-        return Promise.reject(`Что-то пошло не так: ${res}`);
+        // return Promise.reject(`Что-то пошло не так: ${res.json()}`);
     };
 
     register(data) {
@@ -28,7 +27,7 @@ class Auth {
             })
         })
             .then((res) => this._checkResponse(res))
-            .catch(e => console.log(e))
+            .catch(e => console.log(`${e}`))
     }
 
     login(data) {

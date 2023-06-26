@@ -4,6 +4,7 @@ import {Link, useNavigate} from "react-router-dom";
 import icon from '../../images/logo.svg'
 import auth from "../../utils/auth";
 import {useFormWithValidation} from "../../hooks/useForm";
+import {EMAIL_PATTERN} from "../../utils/constants";
 
 const Login = ({ setLoggedIn, onLogin }) => {
     const {values, handleChange, resetFrom, errors, isValid} = useFormWithValidation();
@@ -39,6 +40,7 @@ const Login = ({ setLoggedIn, onLogin }) => {
                             type={'email'}
                             id={'email'}
                             name={'email'}
+                            pattern={EMAIL_PATTERN}
                             autoComplete='off'
                             className={classNames('login__input', 'login__input_name')}
                             onChange={handleChange}

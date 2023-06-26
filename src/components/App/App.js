@@ -20,6 +20,7 @@ function App() {
 
     const handleLoggedOut = () => {
         localStorage.removeItem('jwt')
+        navigate('/');
         setIsLoggedIn(false);
     }
 
@@ -36,7 +37,7 @@ function App() {
                 .catch(e => console.log(e));
         } else console.log('NOT TOKEN', token);
 
-    }, [])
+    }, [isLoggedIn])
 
   return (
     <div className="App">

@@ -23,11 +23,14 @@ export function useFormWithValidation() {
         const value = input.value;
         const name = input.name;
         setValues({ ...values, [name]: value });
-        setErrors({ ...errors, [name]: input.validationMessage });
+        setErrors({
+            ...errors,
+            [name]: input.validationMessage
+        });
         setIsValid(input.closest("form").checkValidity());
 
     };
-
+    console.log('ERRORS', errors);
     const resetFrom = useCallback(
         (newValues = {}, newErrors = {}, newIsValid = false) => {
             setValues(newValues);

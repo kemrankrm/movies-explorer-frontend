@@ -15,6 +15,7 @@ import {mainApi} from "../../utils/utils";
 const Main = ({ isLoggedIn, setLoggedIn, setLoggedOut, setUser }) => {
     const [windowWidth, setWindowWidth] = useState(null);
     const [savedMovies, setSavedMovies] = useState([]);
+    const [isPopupOpen, setIsPopupOpen] = useState(false)
 
     const handleLogin = () => {
         setLoggedIn()
@@ -53,11 +54,11 @@ const Main = ({ isLoggedIn, setLoggedIn, setLoggedOut, setUser }) => {
         if (token) {
             mainApi.getMovies(token)
                 .then(res => {
-                    // console.log(res);
                     setSavedMovies(res);
                 })
         }
     }, [])
+
 
     return (
         <>
@@ -96,6 +97,8 @@ const Main = ({ isLoggedIn, setLoggedIn, setLoggedOut, setUser }) => {
                                 loggedIn={isLoggedIn}
                                 onLogout={handleLogout}
                                 setUser={setUser}
+                                setPopupOpen={setIsPopupOpen}
+                                isPopupOpen={isPopupOpen}
                             />
                         }
                     />
@@ -113,7 +116,12 @@ const Main = ({ isLoggedIn, setLoggedIn, setLoggedOut, setUser }) => {
                     />
                     <Route
                         path={'/signup'}
-                        element={<Register setLoggedIn={handleLogin}/>}
+                        element={
+                        <Register
+                            setLoggedIn={handleLogin}
+                            setUser={setUser}
+                        />
+                    }
                     />
                     <Route path={'*'} element={<NotFound/>}/>
                 </Routes>
