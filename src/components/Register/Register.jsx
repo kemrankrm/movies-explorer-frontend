@@ -6,21 +6,12 @@ import auth from "../../utils/auth";
 import {useFormWithValidation} from "../../hooks/useForm";
 import {useError} from "../../hooks/useError";
 import {EMAIL_PATTERN} from "../../utils/constants";
-import {useState} from "react";
-import {Popup} from "../Popup/Popup";
 
-const Register = ({ setLoggedIn, setUser }) => {
+const Register = ({ setLoggedIn }) => {
 
     const navigate = useNavigate();
     const {values, handleChange, resetFrom, errors, isValid} = useFormWithValidation();
     const {error, errorIsOpen, handleErrorClear, handleErrorShowUp} = useError();
-    // const handlePopupOpen = () => {
-    //     setRegisterOk(true)
-    //
-    //     setTimeout(() => {
-    //         setRegisterOk(false)
-    //     }, 5000)
-    // }
 
     const handleFormSubmit = (e) => {
         e.preventDefault()
@@ -135,7 +126,6 @@ const Register = ({ setLoggedIn, setUser }) => {
                      Войти
                 </Link>
             </p>
-            {/*{registerOk ? <Popup name={'register'}/> : 'null'}*/}
         </section>
     )
 }

@@ -1,48 +1,46 @@
 import './SearchForm.css';
 import { useEffect, useState } from "react";
-import {api, handleSearch, mainApi} from "../../utils/utils";
+import { api, handleSearch, mainApi } from "../../utils/utils";
 
-const SearchForm = ({ setMovies, savedMovies }) => {
-    const [movieSearchInput, setMovieSearchInput] = useState({ keyword: '', checkbox: null });
+const SearchForm = ({ setMovies, savedMovies, isShort, setIsShort }) => {
+    const [movieSearchInput, setMovieSearchInput] = useState({ keyword: '', checkbox: isShort });
 
     const handleMovieNameInput = (e) => {
         setMovieSearchInput({ ...movieSearchInput, keyword: e.target.value });
     }
 
     const handleCheckBoxClick = () => {
-        setMovieSearchInput({ ...movieSearchInput, checkbox: !movieSearchInput.checkbox })
+        setIsShort((prevIsShort) => !prevIsShort);
+        setMovieSearchInput({ ...movieSearchInput, checkbox: !isShort })
+    }
+
+    const handleMoviesResponse = (response, name) => {
+        const filteredMoviesList = handleSearch(movieSearchInput.keyword, movieSearchInput.checkbox, response)
+
+        localStorage.setItem(name, JSON.stringify(filteredMoviesList));
+        setMovies(filteredMoviesList);
     }
 
     const handleSearchSubmit = (e) => {
         e.preventDefault();
+
         localStorage.setItem('searchInput', JSON.stringify(movieSearchInput));
 
         if (savedMovies) {
             const token = localStorage.getItem('jwt');
-            mainApi.getMovies(token)
-                .then(res => {
-                    const filteredMoviesList = handleSearch(movieSearchInput.keyword, movieSearchInput.checkbox, res)
 
-                    localStorage.setItem('foundSavedMovies', JSON.stringify(filteredMoviesList));
-                    setMovies(filteredMoviesList);
-                });
+            mainApi.getMovies(token).then(res => handleMoviesResponse(res, 'foundSavedMovies'));
         } else {
-            api.getMovies()
-                .then(res => {
-                    const filteredMoviesList = handleSearch(movieSearchInput.keyword, movieSearchInput.checkbox, res)
-
-                    localStorage.setItem('foundMovies', JSON.stringify(filteredMoviesList));
-                    setMovies(filteredMoviesList);
-                });
+            api.getMovies().then(res => handleMoviesResponse(res, 'foundMovies'));
         }
     };
 
     useEffect(() => {
         const storedSearchData = JSON.parse(localStorage.getItem('searchInput'));
 
-        if (storedSearchData) {
-            setMovieSearchInput(JSON.parse(localStorage.getItem('searchInput')));
-        }
+        storedSearchData && setMovieSearchInput(
+            JSON.parse(localStorage.getItem('searchInput'))
+        );
     }, []);
 
     return (
@@ -56,7 +54,7 @@ const SearchForm = ({ setMovies, savedMovies }) => {
                         onChange={handleMovieNameInput}
                         value={movieSearchInput.keyword || ''}
                     />
-                    <button type={"submit"} className={'search-form__button'}></button>
+                    <button type={"submit"} className={'search-form__button'} />
                 </fieldset>
                 <fieldset className={'search-form__checkbox'}>
                     <label className={'search-form__switch-label'}>
@@ -64,12 +62,12 @@ const SearchForm = ({ setMovies, savedMovies }) => {
                             type={'checkbox'}
                             className={'search-form__switch'}
                             onClick={handleCheckBoxClick}
-                            defaultChecked={movieSearchInput.checkbox}
+                            defaultChecked={isShort}
                         />
-                        <span className={'search-form__pseudo'}></span>
+                        <span className={'search-form__pseudo'} />
                         <span className={'search-form__label-text'}>
-              Короткометражки
-            </span>
+                          Короткометражки
+                        </span>
                     </label>
                 </fieldset>
             </form>

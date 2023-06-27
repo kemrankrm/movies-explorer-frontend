@@ -36,7 +36,7 @@ const Profile = ({ onLogout, setUser, setPopupOpen, isPopupOpen}) => {
 
     useEffect(() => {
         setValues(userInfo);
-    }, [])
+    }, [setValues, userInfo])
 
     console.log('VALUES', values);
 

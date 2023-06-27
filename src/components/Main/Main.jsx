@@ -11,7 +11,6 @@ import ProtectedRouteElement from "../ProtectedRoute/ProtectedRoute";
 import {useEffect, useState} from "react";
 import {mainApi} from "../../utils/utils";
 
-
 const Main = ({ isLoggedIn, setLoggedIn, setLoggedOut, setUser }) => {
     const [windowWidth, setWindowWidth] = useState(null);
     const [savedMovies, setSavedMovies] = useState([]);
@@ -40,6 +39,7 @@ const Main = ({ isLoggedIn, setLoggedIn, setLoggedOut, setUser }) => {
 
     useEffect(() => {
         window.addEventListener('resize', handleWindowResize);
+
         return (() => {
             window.removeEventListener('resize', handleWindowResize);
         })
@@ -51,11 +51,9 @@ const Main = ({ isLoggedIn, setLoggedIn, setLoggedOut, setUser }) => {
 
     useEffect(() => {
         const token = localStorage.getItem('jwt');
+
         if (token) {
-            mainApi.getMovies(token)
-                .then(res => {
-                    setSavedMovies(res);
-                })
+            mainApi.getMovies(token).then(res => setSavedMovies(res))
         }
     }, [])
 
@@ -107,8 +105,8 @@ const Main = ({ isLoggedIn, setLoggedIn, setLoggedOut, setUser }) => {
                     <Route
                         exact path={'/'}
                         element={
-                        <Home isLoggedIn={isLoggedIn}/>
-                    }
+                            <Home isLoggedIn={isLoggedIn}/>
+                        }
                     />
                     <Route
                         path={'/signin'}
@@ -117,13 +115,13 @@ const Main = ({ isLoggedIn, setLoggedIn, setLoggedOut, setUser }) => {
                     <Route
                         path={'/signup'}
                         element={
-                        <Register
-                            setLoggedIn={handleLogin}
-                            setUser={setUser}
-                        />
-                    }
+                            <Register
+                                setLoggedIn={handleLogin}
+                                setUser={setUser}
+                            />
+                        }
                     />
-                    <Route path={'*'} element={<NotFound/>}/>
+                    <Route path={'*'} element={<NotFound/>} />
                 </Routes>
             </main>
         </>

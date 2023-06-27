@@ -4,10 +4,12 @@ import SearchForm from "../SearchForm/SearchForm";
 import {useEffect, useRef, useState} from "react";
 import {useLocation} from "react-router-dom";
 import Preloader from "../Preloader/Preloader";
+import { handleArraySlice } from '../../utils/utils';
 
 const SavedMovies = ({ windowSize, savedMovies, setSavedMovies }) => {
     const [moviesToShow, setMoviesToShow] = useState([]);
     const [cardsNumber, setCardsNumber] = useState({ initialCardNum: 12, cardsInRow: 3 })
+    const [isShort, setIsShort] = useState(false);
 
     const location = useLocation();
     localStorage.setItem('url', location.pathname);
@@ -24,19 +26,14 @@ const SavedMovies = ({ windowSize, savedMovies, setSavedMovies }) => {
 
     const next = useRef(handleWindowSize());
 
-    const handleArraySlice = (start, end) => {
-        const slicedArray = savedMovies.slice(start, end);
-        setMoviesToShow(slicedArray)
-    }
-
     const handleShowMoreMovies = () => {
         next.current = next.current + cardsNumber.cardsInRow;
-        handleArraySlice(0, next.current);
+        handleArraySlice(0, next.current, savedMovies, setMoviesToShow, isShort);
     }
 
     useEffect(() => {
-        handleArraySlice(0, cardsNumber.initialCardNum);
-    }, [savedMovies])
+        handleArraySlice(0, cardsNumber.initialCardNum, savedMovies, setMoviesToShow, isShort);
+    }, [savedMovies, isShort, cardsNumber])
 
     useEffect(() => {
         if (windowSize < 768) {
@@ -51,7 +48,12 @@ const SavedMovies = ({ windowSize, savedMovies, setSavedMovies }) => {
     return (
         <>
             <section className={'saved'}>
-                <SearchForm setMovies={setSavedMovies} savedMovies={true}/>
+                <SearchForm
+                    setIsShort={setIsShort}
+                    isShort={isShort}
+                    setMovies={setSavedMovies}
+                    savedMovies={true}
+                />
                 <MovieCardList
                     movies={moviesToShow}
                     savedMovies={savedMovies}

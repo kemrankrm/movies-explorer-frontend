@@ -6,7 +6,6 @@ export const api = new MovieApi(moviesUrl);
 
 export const mainApi = new MainApi(mainApiUrl);
 
-
 export const handleWindowResize = () => {
     return window.innerWidth
 }
@@ -29,4 +28,21 @@ export const handleSearch = (keyword, checkboxState, res) => {
 
         return includeSearch && checkboxCondition;
     })
+}
+
+export const filterShortMovies = (movies) => movies.filter(
+    (movieItem) => movieItem.duration <= 40
+);
+
+export const handleArraySlice = (start, end, movies, setMovies, isShort) => {
+    let slicedMovies;
+
+    slicedMovies = movies;
+
+    if (isShort) {
+        slicedMovies = filterShortMovies(movies);
+    }
+
+    slicedMovies = slicedMovies.slice(start, end);
+    setMovies(slicedMovies)
 }
