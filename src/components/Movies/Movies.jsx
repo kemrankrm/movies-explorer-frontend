@@ -15,6 +15,7 @@ import {
     TWO_CARD_IN_ROW
 } from "../../utils/constants";
 import { handleArraySlice } from '../../utils/utils';
+import Loader from '../Loader/Loader';
 
 const handleWindowSize = (windowSize) => {
     if (windowSize < MID_SCREEN_SIZE) {
@@ -31,6 +32,8 @@ const Movies = ({ windowSize, savedMovies, setSavedMovies }) => {
     const [moviesToShow, setMoviesToShow] = useState([]);
     const [cardsNumber, setCardsNumber] = useState({ initialCardNum: 12, cardsInRow: 3 })
     const [isShort, setIsShort] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+
     const location = useLocation();
     const next = useRef(handleWindowSize(windowSize));
 
@@ -68,22 +71,26 @@ const Movies = ({ windowSize, savedMovies, setSavedMovies }) => {
 
     useEffect(() => {
         const foundMovies = JSON.parse(localStorage.getItem('foundMovies'));
-        foundMovies.length && setMovies(foundMovies)
+        foundMovies?.length && setMovies(foundMovies)
     }, [])
 
     return (
         <section className={'movies'}>
             <SearchForm
+                setIsLoading={setIsLoading}
                 setIsShort={setIsShort}
                 isShort={isShort}
                 setMovies={setMovies}
                 savedMovies={false}
             />
-            <MovieCardList
-                movies={moviesToShow}
-                savedMovies={savedMovies}
-                setSavedMovies={setSavedMovies}
-            />
+            {isLoading
+                ? <Loader />
+                : <MovieCardList
+                    movies={moviesToShow}
+                    savedMovies={savedMovies}
+                    setSavedMovies={setSavedMovies}
+                />
+            }
             {
                 next.current >= movies.length
                     ? null

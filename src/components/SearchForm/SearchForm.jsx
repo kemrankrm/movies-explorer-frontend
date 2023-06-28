@@ -2,7 +2,15 @@ import './SearchForm.css';
 import { useEffect, useState } from "react";
 import { api, handleSearch, mainApi } from "../../utils/utils";
 
-const SearchForm = ({ setMovies, savedMovies, isShort, setIsShort }) => {
+const SearchForm = (
+    {
+        setMovies,
+        savedMovies,
+        isShort,
+        setIsShort,
+        setIsLoading,
+    }
+) => {
     const [movieSearchInput, setMovieSearchInput] = useState({ keyword: '', checkbox: isShort });
 
     const handleMovieNameInput = (e) => {
@@ -14,24 +22,26 @@ const SearchForm = ({ setMovies, savedMovies, isShort, setIsShort }) => {
         setMovieSearchInput({ ...movieSearchInput, checkbox: !isShort })
     }
 
-    const handleMoviesResponse = (response, name) => {
-        const filteredMoviesList = handleSearch(movieSearchInput.keyword, movieSearchInput.checkbox, response)
+    const handleMoviesResponse = (response, name, setIsLoading) => {
+        const filteredMoviesList = handleSearch(movieSearchInput.keyword, response)
 
         localStorage.setItem(name, JSON.stringify(filteredMoviesList));
         setMovies(filteredMoviesList);
+        setIsLoading(false)
     }
 
     const handleSearchSubmit = (e) => {
         e.preventDefault();
+        setIsLoading(true);
 
         localStorage.setItem('searchInput', JSON.stringify(movieSearchInput));
 
         if (savedMovies) {
             const token = localStorage.getItem('jwt');
 
-            mainApi.getMovies(token).then(res => handleMoviesResponse(res, 'foundSavedMovies'));
+            mainApi.getMovies(token).then(res => handleMoviesResponse(res, 'foundSavedMovies', setIsLoading));
         } else {
-            api.getMovies().then(res => handleMoviesResponse(res, 'foundMovies'));
+            api.getMovies().then(res => handleMoviesResponse(res, 'foundMovies', setIsLoading));
         }
     };
 

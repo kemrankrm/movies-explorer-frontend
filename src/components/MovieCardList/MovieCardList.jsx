@@ -20,12 +20,6 @@ const MoviesCardList = ({ movies, setMovies, savedMovies, setSavedMovies }) => {
         movies.length ? setIsNoMovies(false) : setIsNoMovies(true)
     }, [movies])
 
-    // console.log('MOVIES IN CARD LIST', movies);
-    // if (!movies.length) {
-    //     return 'No Movies'
-    // }
-
-
     const handleMovieSave = (e) => {
         const id = e.target.id;
         const movie = movies.find(movie => movie.id === +id)
@@ -45,6 +39,7 @@ const MoviesCardList = ({ movies, setMovies, savedMovies, setSavedMovies }) => {
 
         const foundMovie = savedMovies?.find(savedMovie => savedMovie.movieId === +id)
         const token = localStorage.getItem('jwt');
+
         if (token) {
             mainApi.removeMovie(foundMovie._id, token)
                 .then(res => {
@@ -71,30 +66,30 @@ const MoviesCardList = ({ movies, setMovies, savedMovies, setSavedMovies }) => {
             <div className={`movies-list__container${isNoMovies ? '_flex' : ''}`}>
                 {
                     isNoMovies
-                    ? <p className={'movies-list__no-movies'}>
-                        НИЧЕГО НЕ НАЙДЕНО
+                        ? <p className={'movies-list__no-movies'}>
+                            НИЧЕГО НЕ НАЙДЕНО
                         </p>
-                    : movies?.map((movie) => {
-                        const isSaved = checkIsSavedMovie(savedMovies, movie);
+                        : movies?.map((movie) => {
+                            const isSaved = checkIsSavedMovie(savedMovies, movie);
 
-                        return (
-                            <MoviesCard
-                                title={movie.nameRU}
-                                duration={movie.duration}
-                                image={
-                                    location.pathname !== '/saved-movies'
-                                        ? baseUrl + '/' + movie.image.url
-                                        : movie.image
-                                }
-                                key={isSavedList ? movie._id : movie.id}
-                                id={isSavedList ? movie.movieId : movie.id}
-                                onSave={handleMovieSave}
-                                onRemove={handleMovieRemove}
-                                setMovies={setMovies}
-                                saved={isSavedList || isSaved}
-                            />
-                        )
-                    })
+                            return (
+                                <MoviesCard
+                                    title={movie.nameRU}
+                                    duration={movie.duration}
+                                    image={
+                                        location.pathname !== '/saved-movies'
+                                            ? baseUrl + '/' + movie.image.url
+                                            : movie.image
+                                    }
+                                    key={isSavedList ? movie._id : movie.id}
+                                    id={isSavedList ? movie.movieId : movie.id}
+                                    onSave={handleMovieSave}
+                                    onRemove={handleMovieRemove}
+                                    setMovies={setMovies}
+                                    saved={isSavedList || isSaved}
+                                />
+                            )
+                        })
                 }
             </div>
         </section>

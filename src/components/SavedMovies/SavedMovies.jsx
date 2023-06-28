@@ -5,10 +5,12 @@ import {useEffect, useRef, useState} from "react";
 import {useLocation} from "react-router-dom";
 import Preloader from "../Preloader/Preloader";
 import { handleArraySlice } from '../../utils/utils';
+import Loader from '../Loader/Loader';
 
 const SavedMovies = ({ windowSize, savedMovies, setSavedMovies }) => {
     const [moviesToShow, setMoviesToShow] = useState([]);
     const [cardsNumber, setCardsNumber] = useState({ initialCardNum: 12, cardsInRow: 3 })
+    const [isLoading, setIsLoading] = useState(false);
     const [isShort, setIsShort] = useState(false);
 
     const location = useLocation();
@@ -49,17 +51,21 @@ const SavedMovies = ({ windowSize, savedMovies, setSavedMovies }) => {
         <>
             <section className={'saved'}>
                 <SearchForm
+                    setIsLoading={setIsLoading}
                     setIsShort={setIsShort}
                     isShort={isShort}
                     setMovies={setSavedMovies}
                     savedMovies={true}
                 />
-                <MovieCardList
-                    movies={moviesToShow}
-                    savedMovies={savedMovies}
-                    setMovies={setSavedMovies}
-                    isSaved={true}
-                />
+                {isLoading
+                    ? <Loader />
+                    : <MovieCardList
+                        movies={moviesToShow}
+                        savedMovies={savedMovies}
+                        setMovies={setSavedMovies}
+                        isSaved={true}
+                    />
+                }
                 {
                     next.current >= savedMovies.length
                         ? null
