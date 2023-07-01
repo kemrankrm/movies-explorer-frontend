@@ -17,8 +17,14 @@ const MoviesCardList = ({ movies, setMovies, savedMovies, setSavedMovies }) => {
     }, [location.pathname])
 
     useEffect(() => {
-        movies.length ? setIsNoMovies(false) : setIsNoMovies(true)
+        setIsNoMovies(!movies.length)
     }, [movies])
+
+    // console.log('MOVIES IN CARD LIST', movies);
+    // if (!movies.length) {
+    //     return 'No Movies'
+    // }
+
 
     const handleMovieSave = (e) => {
         const id = e.target.id;

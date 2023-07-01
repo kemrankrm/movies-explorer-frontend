@@ -13,6 +13,8 @@ const SavedMovies = ({ windowSize, savedMovies, setSavedMovies }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [isShort, setIsShort] = useState(false);
 
+    console.log(savedMovies);
+
     const location = useLocation();
     localStorage.setItem('url', location.pathname);
 

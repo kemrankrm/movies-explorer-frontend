@@ -1,5 +1,5 @@
 import './Main.css';
-import {Route, Routes} from "react-router-dom";
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";
@@ -15,15 +15,13 @@ const Main = ({ isLoggedIn, setLoggedIn, setLoggedOut, setUser }) => {
     const [windowWidth, setWindowWidth] = useState(null);
     const [savedMovies, setSavedMovies] = useState([]);
     const [isPopupOpen, setIsPopupOpen] = useState(false)
+    const location = useLocation()
 
     const handleLogin = () => {
         setLoggedIn()
     }
 
     const handleLogout = () => {
-        localStorage.removeItem('foundMovies');
-        localStorage.removeItem('foundSavedMovies');
-        localStorage.removeItem('searchInput');
         setLoggedOut()
     }
 
@@ -55,14 +53,18 @@ const Main = ({ isLoggedIn, setLoggedIn, setLoggedOut, setUser }) => {
         if (token) {
             mainApi.getMovies(token).then(res => setSavedMovies(res))
         }
-    }, [])
+    }, [isLoggedIn])
 
+    useEffect(() => {
+        // This callback will be executed whenever the URL changes
+        console.log('URL changed:', location.pathname);
+    }, [location]);
 
     return (
         <>
             <main className={'main'}>
                 <Routes>
-                    {/*PROTECTED ROUTES*/}
+                    PROTECTED ROUTES
                     <Route
                         path={'/movies'}
                         element={
@@ -104,9 +106,7 @@ const Main = ({ isLoggedIn, setLoggedIn, setLoggedOut, setUser }) => {
                     {/*OPEN ROUTES*/}
                     <Route
                         exact path={'/'}
-                        element={
-                            <Home isLoggedIn={isLoggedIn}/>
-                        }
+                        element={<Home isLoggedIn={isLoggedIn}/>}
                     />
                     <Route
                         path={'/signin'}

@@ -8,51 +8,53 @@ import auth from "../../utils/auth";
 import {useNavigate} from "react-router-dom";
 
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false );
+    const [isLoggedIn, setIsLoggedIn] = useState(null);
     const [user, setUser] = useState({ name: 'Undef', email: 'Undef'});
     const navigate = useNavigate();
 
-
     const handleLoggedIn = () => {
         setIsLoggedIn(true);
-        navigate('/movies');
     }
 
     const handleLoggedOut = () => {
         localStorage.removeItem('jwt')
+        localStorage.removeItem('foundMovies');
+        localStorage.removeItem('foundSavedMovies');
+        localStorage.removeItem('searchInput');
+
         navigate('/');
-        setIsLoggedIn(false);
+        setIsLoggedIn(null);
     }
 
-
-
     useEffect(() => {
-        const token = localStorage.getItem('jwt')
-        if (token) {
-            auth.getCurrentProfile(token)
-                .then(res => {
-                    setUser({ name: res.name, email: res.email});
-                    handleLoggedIn();
-                })
-                .catch(e => console.log(e));
-        } else console.log('NOT TOKEN', token);
+        if (!isLoggedIn) {
+            const token = localStorage.getItem('jwt');
 
+            if (token) {
+                auth.getCurrentProfile(token)
+                    .then(({name, email}) => {
+                        setUser({ name, email});
+                        handleLoggedIn();
+                    })
+                    .catch(e => console.log(e));
+            } else console.log('NOT TOKEN', token);
+        }
     }, [isLoggedIn])
 
-  return (
-    <div className="App">
-        <userData.Provider value={user}>
-            <Header isLoggedIn={isLoggedIn}/>
-            <Main
-                isLoggedIn={isLoggedIn}
-                setLoggedIn={handleLoggedIn}
-                setLoggedOut={handleLoggedOut}
-                setUser={setUser}
-            />
-            <Footer/>
-        </userData.Provider>
-    </div>
-  );
+    return (
+        <div className="App">
+            <userData.Provider value={user}>
+                <Header isLoggedIn={isLoggedIn}/>
+                <Main
+                    isLoggedIn={isLoggedIn}
+                    setLoggedIn={handleLoggedIn}
+                    setLoggedOut={handleLoggedOut}
+                    setUser={setUser}
+                />
+                <Footer/>
+            </userData.Provider>
+        </div>
+    );
 }
 
 export default App;

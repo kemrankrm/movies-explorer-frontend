@@ -30,7 +30,7 @@ const handleWindowSize = (windowSize) => {
 const Movies = ({ windowSize, savedMovies, setSavedMovies }) => {
     const [movies, setMovies] = useState([]);
     const [moviesToShow, setMoviesToShow] = useState([]);
-    const [cardsNumber, setCardsNumber] = useState({ initialCardNum: 12, cardsInRow: 3 })
+    const [cardsNumber, setCardsNumber] = useState({ initialCardNum: LARGE_SCREEN_CARDS_NUMBER, cardsInRow: THREE_CARD_IN_ROW })
     const [isShort, setIsShort] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
