@@ -6,10 +6,16 @@ import {useLocation} from "react-router-dom";
 import Preloader from "../Preloader/Preloader";
 import { handleArraySlice } from '../../utils/utils';
 import Loader from '../Loader/Loader';
+import {
+    LARGE_SCREEN_CARDS_NUMBER, LARGE_SCREEN_SIZE, MID_SCREEN_CARDS_NUMBER,
+    MID_SCREEN_SIZE, ONE_CARD_IN_ROW,
+    SMALL_SCREEN_CARDS_NUMBER,
+    THREE_CARD_IN_ROW, TWO_CARD_IN_ROW
+} from "../../utils/constants";
 
 const SavedMovies = ({ windowSize, savedMovies, setSavedMovies }) => {
     const [moviesToShow, setMoviesToShow] = useState([]);
-    const [cardsNumber, setCardsNumber] = useState({ initialCardNum: 12, cardsInRow: 3 })
+    const [cardsNumber, setCardsNumber] = useState({ initialCardNum: LARGE_SCREEN_CARDS_NUMBER, cardsInRow: THREE_CARD_IN_ROW })
     const [isLoading, setIsLoading] = useState(false);
     const [isShort, setIsShort] = useState(false);
 
@@ -19,12 +25,12 @@ const SavedMovies = ({ windowSize, savedMovies, setSavedMovies }) => {
     localStorage.setItem('url', location.pathname);
 
     const handleWindowSize = () => {
-        if (windowSize < 768) {
-            return 5
-        } else if (windowSize < 1280) {
-            return 8
+        if (windowSize < MID_SCREEN_SIZE) {
+            return SMALL_SCREEN_CARDS_NUMBER
+        } else if (windowSize < LARGE_SCREEN_SIZE) {
+            return MID_SCREEN_CARDS_NUMBER
         } else {
-            return 12
+            return LARGE_SCREEN_CARDS_NUMBER
         }
     }
 
@@ -40,12 +46,12 @@ const SavedMovies = ({ windowSize, savedMovies, setSavedMovies }) => {
     }, [savedMovies, isShort, cardsNumber])
 
     useEffect(() => {
-        if (windowSize < 768) {
-            setCardsNumber({ initialCardNum: 5, cardsInRow: 1 })
-        } else if (windowSize < 1280) {
-            setCardsNumber({ initialCardNum: 8, cardsInRow: 2 })
+        if (windowSize < MID_SCREEN_SIZE) {
+            setCardsNumber({ initialCardNum: SMALL_SCREEN_CARDS_NUMBER, cardsInRow: ONE_CARD_IN_ROW })
+        } else if (windowSize < LARGE_SCREEN_SIZE) {
+            setCardsNumber({ initialCardNum: MID_SCREEN_CARDS_NUMBER, cardsInRow: TWO_CARD_IN_ROW })
         } else {
-            setCardsNumber({ initialCardNum: 12, cardsInRow: 3 })
+            setCardsNumber({ initialCardNum: LARGE_SCREEN_CARDS_NUMBER, cardsInRow: THREE_CARD_IN_ROW })
         }
     }, [windowSize])
 
