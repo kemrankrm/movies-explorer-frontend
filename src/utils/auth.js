@@ -40,9 +40,6 @@ class Auth {
             })
         })
             .then(res => {
-                if (!res.ok) {
-                    return Promise.reject(res)
-                }
                 return res.json();
             })
             .catch(e => console.log('Error', e))

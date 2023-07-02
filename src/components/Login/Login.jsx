@@ -32,7 +32,7 @@ const Login = ({ setLoggedIn }) => {
             })
             .catch(e => console.log(e))
     }
-
+    console.log(error)
     return (
         <section className={'login'}>
             <div className={'login__heading'}>
