@@ -120,6 +120,11 @@
     color: #424242;
 }
 
+.login__button_error {
+    background-color: #EE3465;
+    color: #FFFFFF;
+}
+
 .login__note {
     font-family: Inter, sans-serif;
     font-size: 14px;

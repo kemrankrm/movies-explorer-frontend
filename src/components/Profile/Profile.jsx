@@ -6,39 +6,47 @@ import {useFormWithValidation} from "../../hooks/useForm";
 import auth from "../../utils/auth";
 import {useLocation} from "react-router-dom";
 import { EMAIL_PATTERN } from "../../utils/constants";
+import {useError} from "../../hooks/useError";
 
-const Profile = ({ onLogout, setUser, setPopupOpen, isPopupOpen}) => {
+const Profile = ({ onLogout, setUser, setIsInfoSaved, isInfoSaved}) => {
 
     const {values, setValues, handleChange, errors, isValid} = useFormWithValidation();
+    const {error, errorIsOpen, handleErrorClear, handleErrorShowUp} = useError();
+
     const userInfo = useContext(userData);
 
     const location = useLocation();
-    console.log(location.pathname);
     localStorage.setItem('url', location.pathname);
 
-    const handlePopupOpen = () => {
-        setPopupOpen(true);
+    const handleInfoSave = () => {
+        setIsInfoSaved(true);
     }
 
-    const handlePopupClose = () => {
-        setPopupOpen(false);
+    const handleInfoUnsave = () => {
+        setIsInfoSaved(false);
     }
 
     const handleSubmit = () => {
         const token = localStorage.getItem('jwt');
         auth.updateCurrentProfile(values, token)
             .then(res => {
-                console.log(res)
-                handlePopupOpen()
+                console.log(res);
+                if (res.message) {
+                    console.log(res.message);
+                    handleErrorShowUp(res);
+                    return Promise.reject('ошибка')
+                }
+
+                console.log('<KZZ')
+                handleInfoSave()
                 setUser({ name: res.name, email: res.email });
             })
+            .catch(e => console.log(''))
     }
 
     useEffect(() => {
         setValues(userInfo);
     }, [setValues, userInfo])
-
-    console.log('VALUES', values);
 
     return (
         <>
@@ -61,7 +69,8 @@ const Profile = ({ onLogout, setUser, setPopupOpen, isPopupOpen}) => {
                                 className={classNames('profile__input', 'profile__input_name')}
                                 onChange={(e) => {
                                     handleChange(e);
-                                    handlePopupClose()
+                                    handleInfoUnsave()
+                                    handleErrorClear()
                                 }}
                                 required={true}
                                 value={values.name || ''}
@@ -84,10 +93,10 @@ const Profile = ({ onLogout, setUser, setPopupOpen, isPopupOpen}) => {
                                 autoComplete={'off'}
                                 placeholder={userInfo.email}
                                 className={classNames('profile__input', 'profile__input_name')}
-                                // onChange={handleChange}
                                 onChange={(e) => {
                                     handleChange(e);
-                                    handlePopupClose()
+                                    handleInfoUnsave();
+                                    handleErrorClear();
                                 }}
                                 required={true}
                                 value={values.email || ''}
@@ -104,7 +113,7 @@ const Profile = ({ onLogout, setUser, setPopupOpen, isPopupOpen}) => {
                         onClick={handleSubmit}
                         disabled={userInfo.name === values.name && userInfo.email === values.email}
                     >
-                        {isPopupOpen ? 'Сохранено' : 'Редактировать'}
+                        {isInfoSaved ? 'Сохранено' : 'Редактировать'}
                     </button>
                     <button
                         className={classNames('profile__button', 'profile__button_logout')}
@@ -112,6 +121,13 @@ const Profile = ({ onLogout, setUser, setPopupOpen, isPopupOpen}) => {
                     >
                         Выйти из аккаунта
                     </button>
+                    {
+                        errorIsOpen
+                            ? <div className={'profile__error'}>
+                                <p className={'profile__error-message'}>{`${error.message} : ${error.validation.body.keys[0]}`}</p>
+                            </div>
+                            : null
+                    }
                 </div>
             </section>
         </>

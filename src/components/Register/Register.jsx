@@ -18,9 +18,7 @@ const Register = ({ setLoggedIn }) => {
         resetFrom();
         auth.register(values)
             .then(res => {
-                console.log('REGISTER', res);
                 if (res.message) {
-                    console.log('ERROR MESSAGE SHOW UP');
                     handleErrorShowUp(res)
                     return Promise.reject('ошибка')
                 }
@@ -117,7 +115,7 @@ const Register = ({ setLoggedIn }) => {
                     `}
                     disabled={!isValid}
                     type={'submit'}>
-                    {errorIsOpen ? error : 'Зарегистрироваться'}
+                    {errorIsOpen ? error?.message : 'Зарегистрироваться'}
                 </button>
             </form>
             <p className={'register__note'}>

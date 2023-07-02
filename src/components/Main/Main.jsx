@@ -10,6 +10,7 @@ import {Home} from "../Home/Home";
 import ProtectedRouteElement from "../ProtectedRoute/ProtectedRoute";
 import {useEffect, useState} from "react";
 import {mainApi} from "../../utils/utils";
+import {userData} from "../../context/context";
 
 const Main = ({ isLoggedIn, setLoggedIn, setLoggedOut, setUser }) => {
     const [windowWidth, setWindowWidth] = useState(null);
@@ -55,10 +56,9 @@ const Main = ({ isLoggedIn, setLoggedIn, setLoggedOut, setUser }) => {
         }
     }, [isLoggedIn])
 
-    useEffect(() => {
-        // This callback will be executed whenever the URL changes
-        console.log('URL changed:', location.pathname);
-    }, [location]);
+    // useEffect(() => {
+    //     console.log('URL changed:', location.pathname);
+    // }, [location]);
 
     return (
         <>
@@ -97,8 +97,8 @@ const Main = ({ isLoggedIn, setLoggedIn, setLoggedOut, setUser }) => {
                                 loggedIn={isLoggedIn}
                                 onLogout={handleLogout}
                                 setUser={setUser}
-                                setPopupOpen={setIsPopupOpen}
-                                isPopupOpen={isPopupOpen}
+                                setIsInfoSaved={setIsPopupOpen}
+                                isInfoSaved={isPopupOpen}
                             />
                         }
                     />

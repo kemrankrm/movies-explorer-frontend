@@ -5,9 +5,12 @@ import icon from '../../images/logo.svg'
 import auth from "../../utils/auth";
 import {useFormWithValidation} from "../../hooks/useForm";
 import {EMAIL_PATTERN} from "../../utils/constants";
+import {useError} from "../../hooks/useError";
 
-const Login = ({ setLoggedIn, onLogin }) => {
+const Login = ({ setLoggedIn }) => {
     const {values, handleChange, resetFrom, errors, isValid} = useFormWithValidation();
+    const {error, errorIsOpen, handleErrorClear, handleErrorShowUp} = useError();
+
 
     const navigate = useNavigate();
 
@@ -15,6 +18,10 @@ const Login = ({ setLoggedIn, onLogin }) => {
         e.preventDefault();
         auth.login(values)
             .then(res => {
+                if (res.message) {
+                    handleErrorShowUp(res)
+                    return Promise.reject('ошибка')
+                }
                 if (res.token) {
                     resetFrom()
                     const token = res.token;
@@ -43,7 +50,10 @@ const Login = ({ setLoggedIn, onLogin }) => {
                             pattern={EMAIL_PATTERN}
                             autoComplete='off'
                             className={classNames('login__input', 'login__input_name')}
-                            onChange={handleChange}
+                            onChange={(e) => {
+                                handleChange(e);
+                                handleErrorClear();
+                            }}
                             value={values.email || ''}
                             required={true}
                         />
@@ -60,7 +70,10 @@ const Login = ({ setLoggedIn, onLogin }) => {
                             name={'password'}
                             autoComplete={'off'}
                             className={classNames('login__input', 'login__input_name')}
-                            onChange={handleChange}
+                            onChange={(e) => {
+                                handleChange(e);
+                                handleErrorClear();
+                            }}
                             value={values.password || ''}
                             required={true}
                         />
@@ -70,11 +83,15 @@ const Login = ({ setLoggedIn, onLogin }) => {
                     </label>
                 </fieldset>
                 <button
-                    className={`login__button login__button${!isValid ? '_active' : ''}`}
+                    className={`
+                    login__button 
+                    login__button${!isValid ? '_active' : ''}
+                    ${errorIsOpen ? 'login__button_error' : ''}
+                    `}
                     type={'submit'}
                     disabled={!isValid}
                 >
-                    Войти
+                    {errorIsOpen ? error?.message : 'Войти'}
                 </button>
             </form>
             <p className={'login__note'}>

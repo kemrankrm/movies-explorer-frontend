@@ -6,7 +6,7 @@ export function useError() {
 
     const handleErrorShowUp = (error) => {
         setErrorIsOpen(true)
-        setError(error.message)
+        setError(error)
     };
 
     const handleErrorClear = () => {

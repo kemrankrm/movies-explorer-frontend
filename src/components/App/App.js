@@ -27,17 +27,16 @@ function App() {
     }
 
     useEffect(() => {
-        if (!isLoggedIn) {
-            const token = localStorage.getItem('jwt');
-
-            if (token) {
-                auth.getCurrentProfile(token)
-                    .then(({name, email}) => {
-                        setUser({ name, email});
-                        handleLoggedIn();
-                    })
-                    .catch(e => console.log(e));
-            } else console.log('NOT TOKEN', token);
+        const token = localStorage.getItem('jwt');
+        if (token) {
+            auth.getCurrentProfile(token)
+                .then(({name, email}) => {
+                    setUser({ name, email});
+                    handleLoggedIn();
+                })
+                .catch(e => console.log(e));
+        } else {
+            setIsLoggedIn(false)
         }
     }, [isLoggedIn])
 

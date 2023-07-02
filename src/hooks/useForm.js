@@ -30,7 +30,6 @@ export function useFormWithValidation() {
         setIsValid(input.closest("form").checkValidity());
 
     };
-    console.log('ERRORS', errors);
     const resetFrom = useCallback(
         (newValues = {}, newErrors = {}, newIsValid = false) => {
             setValues(newValues);
