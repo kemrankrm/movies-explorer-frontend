@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 const AboutProject = () => {
     return (
-        <section className={'about'}>
+        <section className={'about'} id={'project'}>
             <h2 className={'section__heading'}>
                 О проекте
             </h2>

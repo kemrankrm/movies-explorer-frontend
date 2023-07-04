@@ -1,39 +1,82 @@
-import './SearchForm.css'
-import {useState} from "react";
+import './SearchForm.css';
+import { useEffect, useState } from "react";
+import { api, handleSearch, mainApi } from "../../utils/utils";
 
-const SearchForm = () => {
-    const [switchOn, setSwitchOn] = useState(true)
-    const [movieNameInput, setMovieNameInput] = useState('');
+const SearchForm = (
+    {
+        setMovies,
+        savedMovies,
+        isShort,
+        setIsShort,
+        setIsLoading,
+    }
+) => {
+    const [movieSearchInput, setMovieSearchInput] = useState({ keyword: '', checkbox: isShort });
 
     const handleMovieNameInput = (e) => {
-        setMovieNameInput(e.target.value);
+        setMovieSearchInput({ ...movieSearchInput, keyword: e.target.value });
     }
+
+    const handleCheckBoxClick = () => {
+        setIsShort((prevIsShort) => !prevIsShort);
+        setMovieSearchInput({ ...movieSearchInput, checkbox: !isShort })
+    }
+
+    const handleMoviesResponse = (response, name, setIsLoading) => {
+        const filteredMoviesList = handleSearch(movieSearchInput.keyword, response)
+
+        localStorage.setItem(name, JSON.stringify(filteredMoviesList));
+        setMovies(filteredMoviesList);
+        setIsLoading(false)
+    }
+
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+        setIsLoading(true);
+
+        localStorage.setItem('searchInput', JSON.stringify(movieSearchInput));
+
+        if (savedMovies) {
+            const token = localStorage.getItem('jwt');
+
+            mainApi.getMovies(token).then(res => handleMoviesResponse(res, 'foundSavedMovies', setIsLoading));
+        } else {
+            api.getMovies().then(res => handleMoviesResponse(res, 'foundMovies', setIsLoading));
+        }
+    };
+
+    useEffect(() => {
+        const storedSearchData = JSON.parse(localStorage.getItem('searchInput'));
+
+        storedSearchData && setMovieSearchInput(
+            JSON.parse(localStorage.getItem('searchInput'))
+        );
+    }, []);
 
     return (
         <section className={'search-form'}>
-            <form className={'search-form__form'}>
+            <form className={'search-form__form'} onSubmit={handleSearchSubmit}>
                 <fieldset className={'search-form__search'}>
                     <input
                         type={'text'}
                         placeholder={'Фильм'}
                         className={'search-form__input'}
-                        required={true}
                         onChange={handleMovieNameInput}
-                        value={movieNameInput}
+                        value={movieSearchInput.keyword || ''}
                     />
-                    <button type={"submit"} className={'search-form__button'}></button>
+                    <button type={"submit"} className={'search-form__button'} />
                 </fieldset>
                 <fieldset className={'search-form__checkbox'}>
                     <label className={'search-form__switch-label'}>
                         <input
                             type={'checkbox'}
                             className={'search-form__switch'}
-                            onClick={() => setSwitchOn(!switchOn)}
-                            defaultChecked={switchOn}
+                            onClick={handleCheckBoxClick}
+                            defaultChecked={isShort}
                         />
-                        <span className={'search-form__pseudo'}></span>
+                        <span className={'search-form__pseudo'} />
                         <span className={'search-form__label-text'}>
-                            Короткометражки
+                          Короткометражки
                         </span>
                     </label>
                 </fieldset>
@@ -42,4 +85,4 @@ const SearchForm = () => {
     )
 }
 
-export default SearchForm
+export default SearchForm;

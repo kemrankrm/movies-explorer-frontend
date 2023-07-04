@@ -41,6 +41,7 @@
     margin: 0;
 
     border: none;
+    outline: none;
 
     color: #FFFFFF;
 
@@ -105,11 +106,9 @@
     vertical-align: middle;
     width: 36px;
     height: 20px;
-    box-sizing: border-box;
-    overflow: visible;
     background-image: url("../../images/smalltumboff.svg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
 }
 
 .search-form__switch:checked + .search-form__pseudo {

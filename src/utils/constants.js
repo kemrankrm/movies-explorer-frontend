@@ -76,7 +76,6 @@ export const portfolioList = [
     },
 ]
 
-
 export const moviesList = [
     {
         title: 'В погоне за Бенксли',
@@ -151,3 +150,21 @@ export const moviesList = [
         saved: false,
     }
 ]
+
+export const SMALL_SCREEN_CARDS_NUMBER = 5;
+export const MID_SCREEN_CARDS_NUMBER = 8;
+export const LARGE_SCREEN_CARDS_NUMBER = 12;
+
+export const MID_SCREEN_SIZE = 768;
+export const LARGE_SCREEN_SIZE = 1280;
+
+export const ONE_CARD_IN_ROW = 1;
+export const TWO_CARD_IN_ROW = 2;
+export const THREE_CARD_IN_ROW = 3;
+
+
+export const moviesUrl = 'https://api.nomoreparties.co/beatfilm-movies';
+export const baseUrl = 'https://api.nomoreparties.co'
+export const mainApiUrl = 'https://api.kemrankrm-mesto.nomoredomains.work';
+
+export const EMAIL_PATTERN = '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}';

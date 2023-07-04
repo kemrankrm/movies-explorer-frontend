@@ -1,40 +1,15 @@
 import './Header.css';
 import logo from '../../images/logo.svg'
-import {useLocation, useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {useEffect, useState} from "react";
 import Navigation from "../Navigation/Navigation";
 import ProfileButton from "../ProfileButton/ProfileButton";
 
-const Header = () => {
+const Header = ({ isLoggedIn }) => {
 
     const navigate = useNavigate();
-    const location = useLocation().pathname;
     const [isNavOpen, setIsNavOpen] = useState(false)
     const [isDesktop, setIsDesktop] = useState(true)
-    const [isLoggedIn, setIsLoggedIn] = useState(null);
-
-    useEffect(() => {
-        switch (location) {
-            case '/':
-                setIsLoggedIn(false);
-                break;
-
-            case '/movies':
-                setIsLoggedIn(true);
-                break;
-
-            case '/saved-movies':
-                setIsLoggedIn(true);
-                break;
-
-            case '/profile':
-                setIsLoggedIn(true);
-                break;
-
-            default:
-                setIsLoggedIn(true);
-        }
-    }, [location]);
 
     const handleScreenResize = () => {
         if (window.innerWidth > 768) {
@@ -50,7 +25,8 @@ const Header = () => {
 
     useEffect(() => {
         window.addEventListener('resize', handleScreenResize)
-    })
+        return(() => window.removeEventListener('resize', handleScreenResize))
+    },[])
 
     const handleRoute = (e) => {
         const id = e.target.id;
@@ -85,7 +61,7 @@ const Header = () => {
         <>
             <header className={'header'}>
                 <img className={'header__logo'} alt={'logo'} id={'main'} src={logo} onClick={handleRoute}/>
-                { isLoggedIn && isDesktop && <Navigation /> }
+                { isLoggedIn && isDesktop && <Navigation isDesktop={isDesktop}/> }
                 { isLoggedIn &&
                     <button className={'header__nav-button'} onClick={handleNavigationOpen}></button>
                 }
@@ -94,7 +70,9 @@ const Header = () => {
                         <div className={'header__overlay'} onClick={handleNavigationClose}></div>
                         <div className={'header__side-menu'}>
                             <button className={'header__close-button'} onClick={handleNavigationClose}></button>
-                            <Navigation onClose={handleNavigationClose}/>
+                            <Navigation
+                                onClose={handleNavigationClose}
+                            />
                             <ProfileButton onClose={handleNavigationClose}/>
                         </div>
                     </>

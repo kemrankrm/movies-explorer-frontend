@@ -6,8 +6,10 @@ const NavTab = () => {
         <ul className={'navtab'}>
             { navTabLinks.map( item => {
                 return (
-                    <li className={'navtab__link'} key={item.id}>
-                        {item.title}
+                    <li key={item.id}>
+                        <a className={'navtab__link'} href={`#${item.id}`}>
+                            {item.title}
+                        </a>
                     </li>
                 )
             }) }

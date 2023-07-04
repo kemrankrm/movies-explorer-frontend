@@ -1,11 +1,16 @@
 import './Preloader.css'
 
-const Preloader = () => {
+const Preloader = ({ onClick, empty }) => {
     return (
         <section className={'preloader'}>
-            <button className={'preloader__button'}>
-                Еще
-            </button>
+            {!empty
+                ? <button className={'preloader__button'} onClick={onClick}>
+                    Еще
+                </button>
+                : <p className={'preloader__empty'}>
+                    Пусто
+                </p>
+            }
         </section>
     )
 }

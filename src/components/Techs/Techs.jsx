@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 const Techs = () => {
     return (
-        <section className={'techs'}>
+        <section className={'techs'} id={'tech'}>
             <div className={'techs__wrapper'}>
                 <h2 className={classNames('section__heading', 'section__heading_tech')}>
                     Технологии
