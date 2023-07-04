@@ -1,5 +1,5 @@
 import './Main.css';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";
@@ -10,13 +10,11 @@ import {Home} from "../Home/Home";
 import ProtectedRouteElement from "../ProtectedRoute/ProtectedRoute";
 import {useEffect, useState} from "react";
 import {mainApi} from "../../utils/utils";
-import {userData} from "../../context/context";
 
 const Main = ({ isLoggedIn, setLoggedIn, setLoggedOut, setUser }) => {
     const [windowWidth, setWindowWidth] = useState(null);
     const [savedMovies, setSavedMovies] = useState([]);
     const [isPopupOpen, setIsPopupOpen] = useState(false)
-    const location = useLocation()
 
     const handleLogin = () => {
         setLoggedIn()
@@ -55,10 +53,6 @@ const Main = ({ isLoggedIn, setLoggedIn, setLoggedOut, setUser }) => {
             mainApi.getMovies(token).then(res => setSavedMovies(res))
         }
     }, [isLoggedIn])
-
-    // useEffect(() => {
-    //     console.log('URL changed:', location.pathname);
-    // }, [location]);
 
     return (
         <>

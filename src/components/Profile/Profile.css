@@ -113,6 +113,7 @@
 
 .profile__button:disabled {
     color: #424242;
+    cursor: default;
 }
 
 .profile__button_edit {
@@ -122,6 +123,7 @@
 
 .profile__button_disabled {
     color: #424242;
+    cursor: text;
 }
 
 .profile__button_logout {

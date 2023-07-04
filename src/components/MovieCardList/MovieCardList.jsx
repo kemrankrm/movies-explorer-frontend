@@ -20,12 +20,6 @@ const MoviesCardList = ({ movies, setMovies, savedMovies, setSavedMovies }) => {
         setIsNoMovies(!movies.length)
     }, [movies])
 
-    // console.log('MOVIES IN CARD LIST', movies);
-    // if (!movies.length) {
-    //     return 'No Movies'
-    // }
-
-
     const handleMovieSave = (e) => {
         const id = e.target.id;
         const movie = movies.find(movie => movie.id === +id)
@@ -40,6 +34,8 @@ const MoviesCardList = ({ movies, setMovies, savedMovies, setSavedMovies }) => {
         }
     }
 
+    const filterMovies = (movies, foundMovie) => movies.filter(movie => movie._id !== foundMovie._id)
+
     const handleMovieRemove = (e) => {
         const id = e.currentTarget.id
 
@@ -49,15 +45,11 @@ const MoviesCardList = ({ movies, setMovies, savedMovies, setSavedMovies }) => {
         if (token) {
             mainApi.removeMovie(foundMovie._id, token)
                 .then(res => {
-                    const newMovieList = movies.filter(movie => movie._id !== foundMovie._id)
                     if (res.ok) {
                         if (isSavedList) {
-                            setMovies(newMovieList);
+                            setMovies(filterMovies(movies, foundMovie));
                         } else {
-                            mainApi.getMovies(token)
-                                .then(res => {
-                                    setSavedMovies(res);
-                                })
+                            setSavedMovies(filterMovies(savedMovies, foundMovie));
                         }
                     }
                 })

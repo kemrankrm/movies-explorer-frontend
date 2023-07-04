@@ -9,7 +9,6 @@ import { EMAIL_PATTERN } from "../../utils/constants";
 import {useError} from "../../hooks/useError";
 
 const Profile = ({ onLogout, setUser, setIsInfoSaved, isInfoSaved}) => {
-
     const {values, setValues, handleChange, errors, isValid} = useFormWithValidation();
     const {error, errorIsOpen, handleErrorClear, handleErrorShowUp} = useError();
 
@@ -30,18 +29,22 @@ const Profile = ({ onLogout, setUser, setIsInfoSaved, isInfoSaved}) => {
         const token = localStorage.getItem('jwt');
         auth.updateCurrentProfile(values, token)
             .then(res => {
-                console.log(res);
                 if (res.message) {
                     console.log(res.message);
                     handleErrorShowUp(res);
                     return Promise.reject('ошибка')
                 }
 
-                console.log('<KZZ')
                 handleInfoSave()
                 setUser({ name: res.name, email: res.email });
             })
-            .catch(e => console.log(''))
+            .catch(e => console.log(e))
+    }
+
+    const handleErrorText = (error) => {
+        return error?.validation
+            ? `${error?.message} : ${error?.validation?.body?.keys[0]}`
+            : error?.message
     }
 
     useEffect(() => {
@@ -124,7 +127,7 @@ const Profile = ({ onLogout, setUser, setIsInfoSaved, isInfoSaved}) => {
                     {
                         errorIsOpen
                             ? <div className={'profile__error'}>
-                                <p className={'profile__error-message'}>{`${error.message} : ${error.validation.body.keys[0]}`}</p>
+                                <p className={'profile__error-message'}>{handleErrorText(error)}</p>
                             </div>
                             : null
                     }

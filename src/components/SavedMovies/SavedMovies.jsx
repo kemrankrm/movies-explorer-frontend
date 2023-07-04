@@ -4,7 +4,7 @@ import SearchForm from "../SearchForm/SearchForm";
 import {useEffect, useRef, useState} from "react";
 import {useLocation} from "react-router-dom";
 import Preloader from "../Preloader/Preloader";
-import { handleArraySlice } from '../../utils/utils';
+import { filterShortMovies, handleArraySlice } from '../../utils/utils';
 import Loader from '../Loader/Loader';
 import {
     LARGE_SCREEN_CARDS_NUMBER, LARGE_SCREEN_SIZE, MID_SCREEN_CARDS_NUMBER,
@@ -15,11 +15,14 @@ import {
 
 const SavedMovies = ({ windowSize, savedMovies, setSavedMovies }) => {
     const [moviesToShow, setMoviesToShow] = useState([]);
-    const [cardsNumber, setCardsNumber] = useState({ initialCardNum: LARGE_SCREEN_CARDS_NUMBER, cardsInRow: THREE_CARD_IN_ROW })
+    const [cardsNumber, setCardsNumber] = useState(
+        {
+            initialCardNum: LARGE_SCREEN_CARDS_NUMBER,
+            cardsInRow: THREE_CARD_IN_ROW,
+        })
     const [isLoading, setIsLoading] = useState(false);
     const [isShort, setIsShort] = useState(false);
-
-    console.log(savedMovies);
+    const [moviesToCount, setIsMoviesToCount] = useState([])
 
     const location = useLocation();
     localStorage.setItem('url', location.pathname);
@@ -42,8 +45,14 @@ const SavedMovies = ({ windowSize, savedMovies, setSavedMovies }) => {
     }
 
     useEffect(() => {
-        handleArraySlice(0, cardsNumber.initialCardNum, savedMovies, setMoviesToShow, isShort);
-    }, [savedMovies, isShort, cardsNumber])
+        handleArraySlice(
+            0,
+            cardsNumber.initialCardNum,
+            savedMovies,
+            setMoviesToShow,
+            isShort
+        );
+    }, [savedMovies, isShort, cardsNumber, setSavedMovies])
 
     useEffect(() => {
         if (windowSize < MID_SCREEN_SIZE) {
@@ -54,6 +63,14 @@ const SavedMovies = ({ windowSize, savedMovies, setSavedMovies }) => {
             setCardsNumber({ initialCardNum: LARGE_SCREEN_CARDS_NUMBER, cardsInRow: THREE_CARD_IN_ROW })
         }
     }, [windowSize])
+
+    useEffect(() => {
+        setIsMoviesToCount(
+            isShort
+                ? (movies) => filterShortMovies(movies)
+                : savedMovies
+        )
+    }, [isShort, savedMovies])
 
     return (
         <>
@@ -75,7 +92,7 @@ const SavedMovies = ({ windowSize, savedMovies, setSavedMovies }) => {
                     />
                 }
                 {
-                    next.current >= savedMovies.length
+                    next.current >= moviesToCount.length
                         ? null
                         : <Preloader onClick={handleShowMoreMovies}/>
                 }

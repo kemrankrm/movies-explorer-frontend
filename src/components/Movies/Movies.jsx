@@ -14,7 +14,7 @@ import {
     THREE_CARD_IN_ROW,
     TWO_CARD_IN_ROW
 } from "../../utils/constants";
-import { handleArraySlice } from '../../utils/utils';
+import { filterShortMovies, handleArraySlice } from '../../utils/utils';
 import Loader from '../Loader/Loader';
 
 const handleWindowSize = (windowSize) => {
@@ -30,9 +30,14 @@ const handleWindowSize = (windowSize) => {
 const Movies = ({ windowSize, savedMovies, setSavedMovies }) => {
     const [movies, setMovies] = useState([]);
     const [moviesToShow, setMoviesToShow] = useState([]);
-    const [cardsNumber, setCardsNumber] = useState({ initialCardNum: LARGE_SCREEN_CARDS_NUMBER, cardsInRow: THREE_CARD_IN_ROW })
-    const [isShort, setIsShort] = useState(false);
+    const [cardsNumber, setCardsNumber] = useState(
+        {
+            initialCardNum: LARGE_SCREEN_CARDS_NUMBER,
+            cardsInRow: THREE_CARD_IN_ROW,
+        })
+    const [isShort, setIsShort] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [moviesToCount, setIsMoviesToCount] = useState([])
 
     const location = useLocation();
     const next = useRef(handleWindowSize(windowSize));
@@ -47,8 +52,16 @@ const Movies = ({ windowSize, savedMovies, setSavedMovies }) => {
     }, [location.pathname])
 
     useEffect(() => {
+        const isShortLocalStorage = JSON.parse(localStorage.getItem('short'));
+
+        if ((isShortLocalStorage || isShort) && isShort !== null) {
+            localStorage.setItem('short', String(isShort));
+        }
+    }, [isShort])
+
+    useEffect(() => {
         handleArraySlice(0, cardsNumber.initialCardNum, movies, setMoviesToShow, isShort);
-    }, [movies, isShort])
+    }, [isShort, cardsNumber.initialCardNum, movies])
 
     useEffect(() => {
         if (windowSize < MID_SCREEN_SIZE) {
@@ -71,8 +84,27 @@ const Movies = ({ windowSize, savedMovies, setSavedMovies }) => {
 
     useEffect(() => {
         const foundMovies = JSON.parse(localStorage.getItem('foundMovies'));
-        foundMovies?.length && setMovies(foundMovies)
+        const isShortLocalStorage = JSON.parse(localStorage.getItem('short'));
+
+        if (isShortLocalStorage === null) {
+            localStorage.setItem('short', String(false));
+        } else {
+            setIsShort(isShortLocalStorage)
+        }
+
+        if (foundMovies?.length) {
+            setMovies(foundMovies)
+            setIsMoviesToCount(foundMovies);
+        }
     }, [])
+
+    useEffect(() => {
+        setIsMoviesToCount(
+            isShort
+                ? (movies) => filterShortMovies(movies)
+                : movies
+        )
+    }, [isShort, movies])
 
     return (
         <section className={'movies'}>
@@ -92,7 +124,7 @@ const Movies = ({ windowSize, savedMovies, setSavedMovies }) => {
                 />
             }
             {
-                next.current >= movies.length
+                next.current >= moviesToCount.length
                     ? null
                     : <Preloader onClick={handleShowMoreMovies}/>
             }

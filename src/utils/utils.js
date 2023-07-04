@@ -25,7 +25,7 @@ export const filterShortMovies = (movies) => movies.filter(
     (movieItem) => movieItem.duration <= 40
 );
 
-export const handleArraySlice = (start, end, movies, setMovies, isShort) => {
+export const handleArraySlice = (start, end, movies, setMoviesToShow, isShort) => {
     let slicedMovies;
 
     slicedMovies = movies;
@@ -35,5 +35,5 @@ export const handleArraySlice = (start, end, movies, setMovies, isShort) => {
     }
 
     slicedMovies = slicedMovies.slice(start, end);
-    setMovies(slicedMovies)
+    setMoviesToShow(slicedMovies)
 }
